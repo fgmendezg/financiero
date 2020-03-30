@@ -12,6 +12,7 @@ import { NbPasswordAuthStrategy, NbAuthModule } from '@nebular/auth';
 @NgModule({
   declarations: [
     AppComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -32,5 +33,6 @@ import { NbPasswordAuthStrategy, NbAuthModule } from '@nebular/auth';
   ],
   providers: [],
   bootstrap: [AppComponent]
+  //bootstrap: [NbLoginComponent]
 })
 export class AppModule { }

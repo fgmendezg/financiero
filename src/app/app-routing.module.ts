@@ -11,6 +11,16 @@ import {
 
 
 //const routes: Routes = [];
+
+export const routes: Routes = [
+  {
+    path: 'auth',
+    //loadChildren: './auth/auth.module#NgxAuthModule'
+    loadChildren: () => import('./auth/auth.module').then(m => m.NgxAuthModule)
+  }
+];
+
+/*
 export const routes: Routes = [
   // ... 
 
@@ -45,7 +55,7 @@ export const routes: Routes = [
     ],
   },
 
-];
+];*/
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
