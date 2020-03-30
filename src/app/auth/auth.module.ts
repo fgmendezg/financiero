@@ -31,6 +31,9 @@ import { NgxLoginComponent } from './login/login.component';
     // ... here goes our new components
     NgxLoginComponent
   ],
+  exports: [
+    NgxLoginComponent
+  ]
 })
 export class NgxAuthModule {
 }
