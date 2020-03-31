@@ -1,0 +1,9 @@
+@import '@nebular/theme/styles/global/_breakpoints';
+
+.alaDerecha {
+    float: right;
+}
+// Permite separa un div a la izquiera y otro a la derecha en el nb-layout-header
+:host nb-layout-header div:last-child {
+    margin-left: auto;
+}

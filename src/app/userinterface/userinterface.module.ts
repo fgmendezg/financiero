@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router'; // we also need angular router f
 import { NbSidebarModule, NbLayoutModule, NbButtonModule, NbMenuItem, NbMenuModule } from '@nebular/theme';
 import { UserinterfaceComponent } from './userinterface.component';
 import { routes } from  './userinterface-routing.module';
+import { NbIconModule, NbActionsModule } from '@nebular/theme';
 
 
 
@@ -18,6 +19,8 @@ import { routes } from  './userinterface-routing.module';
     NbLayoutModule,
     NbSidebarModule, // NbSidebarModule.forRoot(), //if this is your app.module
     NbButtonModule,
+    NbIconModule,
+    NbActionsModule
   ],
   exports: [
     UserinterfaceComponent
