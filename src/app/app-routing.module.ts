@@ -8,6 +8,8 @@ import {
   NbRequestPasswordComponent,
   NbResetPasswordComponent,
 } from '@nebular/auth';
+import { UserinterfaceComponent } from './userinterface/userinterface.component';
+import { UserinterfaceModule } from './userinterface/userinterface.module';
 
 
 //const routes: Routes = [];
@@ -17,6 +19,11 @@ export const routes: Routes = [
     path: 'auth',
     //loadChildren: './auth/auth.module#NgxAuthModule'
     loadChildren: () => import('./auth/auth.module').then(m => m.NgxAuthModule)
+  },
+  {
+    path: 'dashboard',
+    loadChildren: () => import('./userinterface/userinterface.module').then(m => m.UserinterfaceModule)
+    //component: UserinterfaceComponent
   }
 ];
 

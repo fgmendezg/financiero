@@ -7,13 +7,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NbThemeModule, NbLayoutModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { HttpClientModule } from '@angular/common/http';
-import { NbPasswordAuthStrategy, NbAuthModule } from '@nebular/auth';
-
-//import { NgxLoginComponent } from './auth/login/login.component';
+import { NbPasswordAuthStrategy, NbAuthModule, NbDummyAuthStrategy } from '@nebular/auth';
+import { NbSidebarService } from '@nebular/theme';
 
 @NgModule({
   declarations: [
     AppComponent
+    //UserinterfaceComponent
   ],
   imports: [
     BrowserModule,
@@ -25,14 +25,24 @@ import { NbPasswordAuthStrategy, NbAuthModule } from '@nebular/auth';
     HttpClientModule,
     NbAuthModule.forRoot({
       strategies: [
-        NbPasswordAuthStrategy.setup({
+        /*NbPasswordAuthStrategy.setup({
+          name: 'email',
+          
+          login: {
+            redirect: {
+              success: '/dashboard/',
+              failure: null, // stay on the same page
+            },
+          }
+        }),*/
+        NbDummyAuthStrategy.setup({
           name: 'email',
         }),
       ],
       forms: {},
     })
   ],
-  providers: [],
+  providers: [NbSidebarService],
   bootstrap: [AppComponent],
   //bootstrap: [NgxLoginComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
