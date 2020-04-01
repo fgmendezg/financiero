@@ -1,1 +1,29 @@
-<p>comofunciona works!</p>
+<nb-card class="col-md-12 col-lg-12 col-xxxl-12">
+    <nb-card-body>
+      <nb-stepper orientation="horizontal">
+        <nb-step [label]="labelOne">
+          <ng-template #labelOne>Registrate</ng-template>
+          <h3>Step content #1</h3>
+          <button nbButton disabled nbStepperNext status="basic">prev</button>
+          <button nbButton nbStepperNext status="basic">next</button>
+        </nb-step>
+        <nb-step [label]="labelTwo">
+          <ng-template #labelTwo>Completa la información y Carga los Documentos</ng-template>
+          <h3>Step content #2</h3>
+          <button nbButton nbStepperPrevious status="basic">prev</button>
+          <button nbButton nbStepperNext status="basic">next</button>
+        </nb-step>
+        <nb-step label="Espera nuestra validación">
+          <h3>Step content #3</h3>
+          <button nbButton nbStepperPrevious status="basic">prev</button>
+          <button nbButton nbStepperNext status="basic">next</button>
+        </nb-step>
+        <nb-step [label]="labelFour">
+          <ng-template #labelFour>Obten tu Credito</ng-template>
+          <h3>Step content #4</h3>
+          <button nbButton nbStepperPrevious status="basic">prev</button>
+          <button nbButton disabled nbStepperNext status="basic">next</button>
+        </nb-step>
+      </nb-stepper>
+    </nb-card-body>
+  </nb-card>
