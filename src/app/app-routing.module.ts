@@ -1,18 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {
-  NbAuthComponent,
-  NbLoginComponent,
-  NbRegisterComponent,
-  NbLogoutComponent,
-  NbRequestPasswordComponent,
-  NbResetPasswordComponent,
-} from '@nebular/auth';
-import { UserinterfaceComponent } from './userinterface/userinterface.component';
-import { UserinterfaceModule } from './userinterface/userinterface.module';
-
-
-//const routes: Routes = [];
 
 export const routes: Routes = [
   {

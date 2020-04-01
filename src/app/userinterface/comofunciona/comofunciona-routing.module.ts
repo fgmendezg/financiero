@@ -1,17 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { UserinterfaceComponent } from './userinterface.component'
-import { ComofuncionaComponent } from './comofunciona/comofunciona.component';
+import { ComofuncionaComponent } from './comofunciona.component'
 
 export const routes: Routes = [
   {
     path: '',
-    component: UserinterfaceComponent
-  },
-  {
-    path: 'ComofuncionaComponent',
-    component:ComofuncionaComponent
+    component: ComofuncionaComponent
   }
 ];
 

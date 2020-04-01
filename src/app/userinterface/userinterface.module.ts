@@ -6,8 +6,7 @@ import { UserinterfaceComponent } from './userinterface.component';
 import { routes } from  './userinterface-routing.module';
 import { NbIconModule, NbActionsModule } from '@nebular/theme';
 import { UserhomeComponent } from './userhome/userhome.component';
-
-
+import { ComofuncionaModule } from './comofunciona/comofunciona.module'
 
 @NgModule({
   declarations: [
@@ -22,7 +21,8 @@ import { UserhomeComponent } from './userhome/userhome.component';
     NbSidebarModule, // NbSidebarModule.forRoot(), //if this is your app.module
     NbButtonModule,
     NbIconModule,
-    NbActionsModule
+    NbActionsModule,
+    ComofuncionaModule
   ],
   exports: [
     UserinterfaceComponent

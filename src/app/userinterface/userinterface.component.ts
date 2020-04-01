@@ -21,6 +21,7 @@ export class UserinterfaceComponent /*implements OnInit*/ {
     {
       title: '¿Como funciona?',
       icon: 'checkmark-circle-2-outline',
+      link: 'ComofuncionaComponent'
     },
     {
       title: 'Pide Tu Prestamo',
