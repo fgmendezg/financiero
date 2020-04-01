@@ -7,8 +7,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NbThemeModule, NbLayoutModule, NbMenuModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { HttpClientModule } from '@angular/common/http';
-import { NbPasswordAuthStrategy, NbAuthModule, NbDummyAuthStrategy } from '@nebular/auth';
-import { NbSidebarService } from '@nebular/theme';
+import { NbPasswordAuthStrategy, NbAuthModule, NbDummyAuthStrategy, } from '@nebular/auth';
+import { NbSidebarService, NbCardModule } from '@nebular/theme';
 
 @NgModule({
   declarations: [
@@ -24,6 +24,7 @@ import { NbSidebarService } from '@nebular/theme';
     NbLayoutModule,
     NbEvaIconsModule,
     HttpClientModule,
+    NbCardModule,
     NbAuthModule.forRoot({
       strategies: [
         /*NbPasswordAuthStrategy.setup({

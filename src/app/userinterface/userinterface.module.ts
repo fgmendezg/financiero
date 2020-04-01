@@ -4,14 +4,13 @@ import { RouterModule } from '@angular/router'; // we also need angular router f
 import { NbSidebarModule, NbLayoutModule, NbButtonModule, NbMenuItem, NbMenuModule } from '@nebular/theme';
 import { UserinterfaceComponent } from './userinterface.component';
 import { routes } from  './userinterface-routing.module';
-import { NbIconModule, NbActionsModule } from '@nebular/theme';
-import { UserhomeComponent } from './userhome/userhome.component';
+import { NbIconModule, NbActionsModule, NbCardModule } from '@nebular/theme';
 import { ComofuncionaModule } from './comofunciona/comofunciona.module'
+import { HomeuserModule } from './homeuser/homeuser.module';
 
 @NgModule({
   declarations: [
-    UserinterfaceComponent,
-    UserhomeComponent
+    UserinterfaceComponent
   ],
   imports: [
     NbMenuModule,
@@ -22,7 +21,9 @@ import { ComofuncionaModule } from './comofunciona/comofunciona.module'
     NbButtonModule,
     NbIconModule,
     NbActionsModule,
-    ComofuncionaModule
+    ComofuncionaModule,
+    HomeuserModule,
+    NbCardModule
   ],
   exports: [
     UserinterfaceComponent
