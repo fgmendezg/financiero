@@ -12,6 +12,10 @@ li{
     padding: 6px;   
 }
 
+.relativePosition {
+    padding-left: 190px
+  }
+
 // Permite separa un div a la izquiera y otro a la derecha en el nb-layout-header
 :host nb-layout-header div:last-child {
     margin-left: auto;
