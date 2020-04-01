@@ -5,12 +5,14 @@ import { NbSidebarModule, NbLayoutModule, NbButtonModule, NbMenuItem, NbMenuModu
 import { UserinterfaceComponent } from './userinterface.component';
 import { routes } from  './userinterface-routing.module';
 import { NbIconModule, NbActionsModule } from '@nebular/theme';
+import { UserhomeComponent } from './userhome/userhome.component';
 
 
 
 @NgModule({
   declarations: [
-    UserinterfaceComponent
+    UserinterfaceComponent,
+    UserhomeComponent
   ],
   imports: [
     NbMenuModule,
