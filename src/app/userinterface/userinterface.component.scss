@@ -1,8 +1,17 @@
 @import '@nebular/theme/styles/global/_breakpoints';
 
-.alaDerecha {
-    float: right;
+.menu {
+    list-style: none;
+    list-style-type: none;
+    font-weight: 400;
+    color: #697681;
 }
+
+li{
+    display: inline;
+    padding: 6px;   
+}
+
 // Permite separa un div a la izquiera y otro a la derecha en el nb-layout-header
 :host nb-layout-header div:last-child {
     margin-left: auto;

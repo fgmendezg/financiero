@@ -19,15 +19,19 @@ export class UserinterfaceComponent /*implements OnInit*/ {
       icon: 'person-outline',
     },
     {
-      title: 'Cambiar Contraseña',
-      icon: 'lock-outline',
+      title: '¿Como funciona?',
+      icon: 'checkmark-circle-2-outline',
+    },
+    {
+      title: 'Pide Tu Prestamo',
+      icon: 'clipboard-outline',
     },
     {
       title: 'Sobre FinanRed',
       icon: { icon: 'checkmark-outline', pack: 'eva' },
     },
     {
-      title: 'Cerrar Sesión',
+      title: 'Salida Segura',
       icon: 'unlock-outline',
     },
   ];
