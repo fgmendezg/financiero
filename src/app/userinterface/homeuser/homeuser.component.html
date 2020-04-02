@@ -1,9 +1,27 @@
 <nb-card>
-    <nb-card-header>Nebula</nb-card-header>
+    <nb-card-header>Información Personal</nb-card-header>
     <nb-card-body>
-        A nebula is an interstellar cloud of dust, hydrogen, helium and other ionized gases.
-        Originally, nebula was a name for any diffuse astronomical object,
-        including galaxies beyond the Milky Way.
+        <span>Nombres: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>Nombre de usuario</span><br>
+        <span>Apellidos: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>Apellidos de usuario</span><br>
+        <span>Email: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>email@gmail.com</span><br>
+        <span>Celular: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>1234567890</span><br>
+        <span>Telefono: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>1234567890</span><br>
+
+        <!-- <table [nbTreeGrid]="data" equalColumnsWidth>
+
+            <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: allColumns"></tr>
+
+            <ng-container [nbTreeGridColumnDef]="customColumn">
+                <td nbTreeGridCell *nbTreeGridCellDef="let row">
+                    {{row.data.dataKey}}
+                </td>
+            </ng-container>
+
+            <ng-container *ngFor="let column of defaultColumns" [nbTreeGridColumnDef]="column">
+                <td nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data[column]}}</td>
+            </ng-container>
+
+        </table> -->
     </nb-card-body>
-    <nb-card-footer>By Wikipedia</nb-card-footer>
+    <!--nb-card-footer>By Wikipedia</nb-card-footer-->
 </nb-card>
