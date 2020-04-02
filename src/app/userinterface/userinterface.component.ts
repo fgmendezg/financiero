@@ -17,11 +17,12 @@ export class UserinterfaceComponent implements OnInit {
     {
       title: 'Editar Perfil',
       icon: 'person-outline',
+      url: '/dashboard/home'
     },
     {
       title: '¿Como funciona?',
       icon: 'checkmark-circle-2-outline',
-      link: 'ComofuncionaComponent'
+      url: '/dashboard/ComofuncionaComponent'
     },
     {
       title: 'Pide Tu Prestamo',

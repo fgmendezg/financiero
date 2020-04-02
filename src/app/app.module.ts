@@ -10,6 +10,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { NbPasswordAuthStrategy, NbAuthModule, NbDummyAuthStrategy, } from '@nebular/auth';
 import { NbSidebarService, NbCardModule } from '@nebular/theme';
 import { HomeuserModule } from './userinterface/homeuser/homeuser.module';
+//import { UserinterfaceModule } from './userinterface/userinterface.module';
+import { UserinterfaceComponent } from './userinterface/userinterface.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,8 @@ import { HomeuserModule } from './userinterface/homeuser/homeuser.module';
     })
   ],
   providers: [NbSidebarService],
-  bootstrap: [AppComponent],
+  //bootstrap: [AppComponent],
+  bootstrap: [UserinterfaceComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule { }
