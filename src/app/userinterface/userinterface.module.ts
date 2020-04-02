@@ -6,6 +6,7 @@ import { UserinterfaceComponent } from './userinterface.component';
 import { routes } from  './userinterface-routing.module';
 import { NbIconModule, NbActionsModule, NbCardModule } from '@nebular/theme';
 import { ComofuncionaModule } from './comofunciona/comofunciona.module'
+import { HomeuserModule } from './homeuser/homeuser.module';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ComofuncionaModule } from './comofunciona/comofunciona.module'
     NbIconModule,
     NbActionsModule,
     ComofuncionaModule,
+    HomeuserModule,
     NbCardModule
   ],
   exports: [
