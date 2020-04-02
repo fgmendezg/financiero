@@ -9,11 +9,11 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { HttpClientModule } from '@angular/common/http';
 import { NbPasswordAuthStrategy, NbAuthModule, NbDummyAuthStrategy, } from '@nebular/auth';
 import { NbSidebarService, NbCardModule } from '@nebular/theme';
+import { HomeuserModule } from './userinterface/homeuser/homeuser.module';
 
 @NgModule({
   declarations: [
     AppComponent
-    //UserinterfaceComponent
   ],
   imports: [
     NbMenuModule.forRoot(),
@@ -25,6 +25,7 @@ import { NbSidebarService, NbCardModule } from '@nebular/theme';
     NbEvaIconsModule,
     HttpClientModule,
     NbCardModule,
+    HomeuserModule,
     NbAuthModule.forRoot({
       strategies: [
         /*NbPasswordAuthStrategy.setup({
@@ -46,7 +47,6 @@ import { NbSidebarService, NbCardModule } from '@nebular/theme';
   ],
   providers: [NbSidebarService],
   bootstrap: [AppComponent],
-  //bootstrap: [NgxLoginComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule { }

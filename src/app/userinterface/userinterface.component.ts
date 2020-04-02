@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
 import { NbSidebarService } from '@nebular/theme';
 import { NbMenuItem } from '@nebular/theme';
 import { NbIconConfig } from '@nebular/theme';
@@ -9,7 +9,7 @@ import { NbIconConfig } from '@nebular/theme';
   templateUrl: './userinterface.component.html',
   styleUrls: ['./userinterface.component.scss']
 })
-export class UserinterfaceComponent /*implements OnInit*/ {
+export class UserinterfaceComponent implements OnInit {
 
   disabledIconConfig: NbIconConfig = { icon: 'settings-2-outline', pack: 'eva' };
 
@@ -40,7 +40,7 @@ export class UserinterfaceComponent /*implements OnInit*/ {
   constructor(private sidebarService: NbSidebarService) {
   }
 
-  /*ngOnInit(): void {
-  }*/
+  ngOnInit(): void {
+  }
 
 }

@@ -13,6 +13,7 @@ import { NbStepperModule, NbButtonModule, NbCardModule } from '@nebular/theme';
     NbButtonModule,
     NbCardModule
   ],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+  exports: [HomeuserComponent]
 })
 export class HomeuserModule { }
