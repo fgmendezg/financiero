@@ -2,25 +2,39 @@
     <nb-card-body>
       <nb-stepper orientation="horizontal">
         <nb-step [label]="labelOne">
-          <ng-template #labelOne>Registrate</ng-template>
-          <h3>Step content #1</h3>
+          <ng-template #labelOne>Formulario</ng-template>
+          <h3>Formulario</h3>
+          <p class="lorem">
+            Llena los datos necesarios 
+          </p>
           <button nbButton disabled nbStepperNext status="basic">prev</button>
           <button nbButton nbStepperNext status="basic">next</button>
         </nb-step>
         <nb-step [label]="labelTwo">
-          <ng-template #labelTwo>Completa la información y Carga los Documentos</ng-template>
-          <h3>Step content #2</h3>
+          <ng-template #labelTwo>Carga tus Documentos</ng-template>
+          <h3>Documentos</h3>
+          <p class="lorem">
+            Para tu solicitud de credito es necesario que suministres los siguientes documentos.
+          </p>
+          <p class="lorem">
+            Deben estar en formato pdf o jpg.
+          </p>
+          <ul>
+            <li>Cedula</li>
+            <li>Comprobante de pago de nomina</li>
+            <li>Certificado laboral</li>
+          </ul>
           <button nbButton nbStepperPrevious status="basic">prev</button>
           <button nbButton nbStepperNext status="basic">next</button>
         </nb-step>
         <nb-step label="Espera nuestra validación">
-          <h3>Step content #3</h3>
+          <h3>Validación</h3>
           <button nbButton nbStepperPrevious status="basic">prev</button>
           <button nbButton nbStepperNext status="basic">next</button>
         </nb-step>
         <nb-step [label]="labelFour">
           <ng-template #labelFour>Obten tu Credito</ng-template>
-          <h3>Step content #4</h3>
+          <h3>Disfruta</h3>
           <button nbButton nbStepperPrevious status="basic">prev</button>
           <button nbButton disabled nbStepperNext status="basic">next</button>
         </nb-step>

@@ -20,17 +20,18 @@ export class UserinterfaceComponent implements OnInit {
       url: '/dashboard/home'
     },
     {
-      title: '¿Como funciona?',
+      title: '¿Como pedir tu credito?',
       icon: 'checkmark-circle-2-outline',
       url: '/dashboard/ComofuncionaComponent'
     },
     {
-      title: 'Pide Tu Prestamo',
-      icon: 'clipboard-outline',
+      title: 'Pide tu Credito',
+      icon: 'clipboard-outline'
     },
     {
-      title: 'Sobre FinanRed',
+      title: 'Preguntas frecuentes',
       icon: { icon: 'checkmark-outline', pack: 'eva' },
+      url: '/dashboard/frecuentes'
     },
     {
       title: 'Salida Segura',
