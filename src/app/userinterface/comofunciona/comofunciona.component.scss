@@ -8,5 +8,51 @@
       margin: 0.5rem;
     }
   }
-  
+
+.divDocument{
+  display: flex;
+  justify-content: center;
+}
+
+.divColumDocuments{
+  display: inline-block;
+  box-shadow: 0 0 10px rgba(0,0,0,.07);
+  width: 20%;
+  max-width: 184px;
+  text-align: center;
+  padding-top: 16px;
+  padding-right: 8px;
+  padding-bottom: 16px;
+  padding-left: 8px;
+  margin-top: 0px;
+  margin-right: 1%;
+  margin-bottom: 0px;
+  margin-left: 1%;
+  box-sizing: border-box;
+}
+
+.divTitleDocument{
+  font-weight: bolder;
+  width: 100px;
+  font-size: 18px;
+  margin-top: 8px;
+  margin-right: 0px;
+  margin-bottom: 8px;
+  margin-left: 0px;
+  display: inline-block;
+}
+
+.divImageDocument{
+  width: 100%;
+  max-width: 48px;
+  height: 40px;
+  margin: 0px;
+  padding: 0px;
+}
+
+.divtextDocument{
+  margin: auto;
+  padding: 0px;
+  font-size: 12px;
+}
   
