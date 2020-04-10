@@ -41,7 +41,7 @@ import { UserinterfaceComponent } from './userinterface/userinterface.component'
           }
         }),*/
         NbDummyAuthStrategy.setup({
-          name: 'email',
+          name: 'email'
         }),
       ],
       forms: {},

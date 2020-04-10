@@ -8,8 +8,16 @@ export const routes: Routes = [
     loadChildren: () => import('./auth/auth.module').then(m => m.NgxAuthModule)
   },
   {
+    path: '',
+    loadChildren: () => import('./userinterface/userinterface.module').then(m => m.UserinterfaceModule)
+  },
+  {
     path: 'dashboard',
     loadChildren: () => import('./userinterface/userinterface.module').then(m => m.UserinterfaceModule)
+  },
+  {
+    path: 'welcome',
+    loadChildren: () => import('./welcome/welcome.module').then(m => m.WelcomeModule)
     //component: UserinterfaceComponent
   }
 ];

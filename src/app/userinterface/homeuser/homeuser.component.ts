@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy,Component, OnInit } from '@angular/core';
+import { UserinterfaceComponent } from '../../userinterface/userinterface.component';
 
 interface TreeNode<T> {
   data: T;
@@ -19,7 +20,9 @@ interface FSEntry {
 })
 export class HomeuserComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+    
+   }
 
   ngOnInit(): void {
   }

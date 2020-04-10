@@ -9,7 +9,7 @@ import { PreguntasfrecuentesComponent } from './preguntasfrecuentes/preguntasfre
 export const routes: Routes = [
   {
     path: '',
-    component: UserinterfaceComponent
+    component: HomeuserComponent
   },
   {
     path: 'ComofuncionaComponent',
@@ -22,6 +22,10 @@ export const routes: Routes = [
   {
     path: 'frecuentes',
     component:PreguntasfrecuentesComponent
+  },
+  {
+    path: 'auth/login',
+    loadChildren: () => import('../auth/auth.module').then(m => m.NgxAuthModule)
   }
 ];
 
