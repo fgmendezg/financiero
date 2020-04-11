@@ -4,9 +4,15 @@
         <nb-step [label]="labelOne">
           <ng-template #labelOne>Formulario</ng-template>
           <h3>Formulario</h3>
-          <p class="lorem">
-            Llena los datos necesarios 
-          </p>
+          <div class="divDocument">
+            <div class="divColumDocuments">
+              <div>
+                <img src="assets/icons/docs/icon_cedula.png" alt="cedula.png" width="48" height="34">
+              </div>
+              <div class="divTitleDocument">Tus Datos</div>
+              <div class="divtextDocument">Ingresa tus datos y pronto nos comunicaremos contigo.</div>
+            </div>
+          </div>
           <button nbButton disabled nbStepperNext status="basic">prev</button>
           <button nbButton nbStepperNext status="basic">next</button>
         </nb-step>
@@ -54,12 +60,30 @@
         </nb-step>
         <nb-step label="Espera nuestra validación">
           <h3>Validación</h3>
+          <div class="divDocument">
+            <div class="divColumDocuments">
+              <div>
+                <img src="assets/icons/docs/icon_cedula.png" alt="cedula.png" width="48" height="34">
+              </div>
+              <div class="divTitleDocument">Verificaremos tu Información</div>
+              <div class="divtextDocument">Una vez tu información sea corroborada te contactaremos.</div>
+            </div>
+          </div>
           <button nbButton nbStepperPrevious status="basic">prev</button>
           <button nbButton nbStepperNext status="basic">next</button>
         </nb-step>
         <nb-step [label]="labelFour">
           <ng-template #labelFour>Obten tu Credito</ng-template>
-          <h3>Disfruta</h3>
+          <h3>Disfruta tu Credito</h3>
+          <div class="divDocument">
+            <div class="divColumDocuments">
+              <div>
+                <img src="assets/icons/docs/icon_cedula.png" alt="cedula.png" width="48" height="34">
+              </div>
+              <div class="divTitleDocument">Cumple tus sueños.</div>
+              <div class="divtextDocument"></div>
+            </div>
+          </div>
           <button nbButton nbStepperPrevious status="basic">prev</button>
           <button nbButton disabled nbStepperNext status="basic">next</button>
         </nb-step>
