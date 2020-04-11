@@ -1,17 +1,19 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ComofuncionaComponent } from './comofunciona.component';
-import { NbStepperModule, NbButtonModule, NbCardModule } from '@nebular/theme';
+import { NbStepperModule, NbButtonModule, NbCardModule, NbInputModule } from '@nebular/theme';
+import { FormularioComponent } from './formulario/formulario.component';
 
 
 
 @NgModule({
-  declarations: [ComofuncionaComponent],
+  declarations: [ComofuncionaComponent, FormularioComponent],
   imports: [
     CommonModule,
     NbStepperModule,
     NbButtonModule,
-    NbCardModule
+    NbCardModule,
+    NbInputModule
   ],
   exports: [
     ComofuncionaComponent

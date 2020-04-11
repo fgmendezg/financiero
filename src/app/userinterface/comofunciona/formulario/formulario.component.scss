@@ -1,0 +1,23 @@
+@import '@nebular/theme/styles/global/_breakpoints';
+
+.inputsbasic{
+    margin-top: 0px;
+    margin-right: 1%;
+    margin-bottom: 0px;
+    margin-left: 1%;
+    width: 100%;
+}
+
+.horizontal{
+    display: inline;
+}
+
+.rejilla{
+    display: grid;
+    grid-template-columns: auto auto;
+    margin-bottom: 20px;
+}
+
+/* :host ::input{
+    outline-width: 0.700rem
+} */
