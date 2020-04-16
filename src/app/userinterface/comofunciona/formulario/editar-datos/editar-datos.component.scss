@@ -1,0 +1,8 @@
+@import '@nebular/theme/styles/global/_breakpoints';
+
+.rejilla{
+    display: grid;
+    grid-template-columns: auto auto;
+    margin-bottom: 20px;
+    grid-column-gap: 20px;
+}

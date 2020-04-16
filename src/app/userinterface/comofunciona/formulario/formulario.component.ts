@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NbWindowService } from '@nebular/theme';
+import { EditarDatosComponent } from './editar-datos/editar-datos.component';
 
 @Component({
   selector: 'app-formulario',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormularioComponent implements OnInit {
 
-  constructor() { }
+  constructor(private windowService: NbWindowService) { }
 
   ngOnInit(): void {
+  }
+
+  openEditDates(){
+    this.windowService.open(EditarDatosComponent, { title: `Información Personal` });
   }
 
 }
