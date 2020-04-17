@@ -8,6 +8,22 @@ import { NbWindowRef } from '@nebular/theme';
 })
 export class EditarDatosComponent implements OnInit {
 
+  isSelectDepartamento = true;
+  
+  ciudades = [];
+  departamentos = [
+    { name: 'Cundinamarca',
+      value: [
+      'Bogota',
+      'Vileta'
+    ] },
+    { name: 'Antioquia',
+      value: [
+      'at1',
+      'at2'
+    ] }
+  ];
+
   constructor(public windowRef: NbWindowRef) { }
 
   ngOnInit(): void {
@@ -15,6 +31,12 @@ export class EditarDatosComponent implements OnInit {
 
   close() {
     this.windowRef.close();
+  }
+
+  seleccionDeCiudades( dep: string ){
+    this.isSelectDepartamento = false;
+    this.ciudades = [];
+    this.ciudades = this.departamentos[dep].value;
   }
 
 }

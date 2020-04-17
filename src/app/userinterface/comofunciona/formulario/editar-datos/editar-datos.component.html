@@ -3,15 +3,30 @@
         <form action="">
             <div class="rejilla">
                 <div>
-                    <label class="label">Nombres:</label>
+                    <label class="label">Primer Nombre:</label>
                     <div class="col-sm-9">
-                        <input class="inputsbasic" type="text" nbInput placeholder="Fredy Gerardo" disabled>
+                        <input class="inputsbasic" type="text" nbInput placeholder="Fredy" disabled>
                     </div>
                 </div>
                 <div>
-                    <label class="label">Apellidos:</label>
+                    <label class="label">Segundo Nombre:</label>
                     <div>
-                        <input class="inputsbasic" type="text" nbInput placeholder="Méndez Gonzalez" disabled>
+                        <input class="inputsbasic" type="text" nbInput placeholder="Gerardo" disabled>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rejilla">
+                <div>
+                    <label class="label">Primer Apellido:</label>
+                    <div class="col-sm-9">
+                        <input class="inputsbasic" type="text" nbInput placeholder="Méndez" disabled>
+                    </div>
+                </div>
+                <div>
+                    <label class="label">Segundo apellido:</label>
+                    <div>
+                        <input class="inputsbasic" type="text" nbInput placeholder="Gonzalez" disabled>
                     </div>
                 </div>
             </div>
@@ -26,7 +41,7 @@
                 <div>
                     <label class="label">Correo Electronico:</label>
                     <div>
-                        <input class="inputsbasic" type="email" nbInput placeholder="fredy@hotmail.com" disabled>
+                        <input class="inputsbasic" type="email" nbInput placeholder="fredy@hotmail.com">
                     </div>
                 </div>
             </div>
@@ -35,13 +50,49 @@
                 <div>
                     <label class="label">Departamento de residencia:</label>
                     <div class="col-sm-9">
-                        <input class="inputsbasic" type="text" nbInput placeholder="Cundinamarca" disabled>
+                        <!-- <input class="inputsbasic" type="text" nbInput placeholder="Cundinamarca"> -->
+                        <nb-select placeholder="Departamento" (selectedChange)="seleccionDeCiudades($event)">
+                            <nb-option value="0">AMAZONAS</nb-option>
+                            <nb-option value="1">ANTIOQUIA</nb-option>
+                            <nb-option value="2">ARAUCA</nb-option>
+                            <nb-option value="3">ATLÁNTICO</nb-option>
+                            <nb-option value="4">BOLÍVAR</nb-option>
+                            <nb-option value="5">BOYACÁ</nb-option>
+                            <nb-option value="6">CALDAS</nb-option>
+                            <nb-option value="7">CAQUETÁ</nb-option>
+                            <nb-option value="8">CASANARE</nb-option>
+                            <nb-option value="9">CAUCA</nb-option>
+                            <nb-option value="10">CESAR</nb-option>
+                            <nb-option value="11">CHOCÓ</nb-option>
+                            <nb-option value="12">CÓRDOBA</nb-option>
+                            <nb-option value="13">CUNDINAMARCA</nb-option>
+                            <nb-option value="14">GUAINÍA</nb-option>
+                            <nb-option value="15">GUAVIARE</nb-option>
+                            <nb-option value="16">HUILA</nb-option>
+                            <nb-option value="17">LA GUAJIRA</nb-option>
+                            <nb-option value="18">MAGDALENA</nb-option>
+                            <nb-option value="19">META</nb-option>
+                            <nb-option value="20">NARIÑO</nb-option>
+                            <nb-option value="21">NORTE DE SANTANDER</nb-option>
+                            <nb-option value="22">PUTUMAYO</nb-option>
+                            <nb-option value="23">QUINDÍO</nb-option>
+                            <nb-option value="24">RISARALDA</nb-option>
+                            <nb-option value="25">SAN ANDRÉS Y PROVIDENCIA</nb-option>
+                            <nb-option value="26">SANTANDER</nb-option>
+                            <nb-option value="27">SUCRE</nb-option>
+                            <nb-option value="28">TOLIMA</nb-option>
+                            <nb-option value="29">VALLE</nb-option>
+                            <nb-option value="30">VAUPÉS</nb-option>
+                            <nb-option value="31">VICHADA</nb-option>
+                        </nb-select>
                     </div>
                 </div>
                 <div>
                     <label class="label">Ciudad de residencia:</label>
                     <div>
-                        <input class="inputsbasic" type="text" nbInput placeholder="Bogota" disabled>
+                        <nb-select placeholder="Ciudad" *ngIf="ciudades" [disabled]="isSelectDepartamento">
+                            <nb-option *ngFor="let city of ciudades">{{ city }}</nb-option>
+                        </nb-select>
                     </div>
                 </div>
             </div>
@@ -51,13 +102,13 @@
                 <div>
                     <label class="label">Celular:</label>
                     <div class="col-sm-9">
-                        <input class="inputsbasic" type="text" nbInput placeholder="3111234587" disabled>
+                        <input class="inputsbasic" type="text" nbInput placeholder="3111234587">
                     </div>
                 </div>
                 <div>
                     <label class="label">Telefono fijo:</label>
                     <div>
-                        <input class="inputsbasic" type="text" nbInput placeholder="8445687" disabled>
+                        <input class="inputsbasic" type="text" nbInput placeholder="8445687">
                     </div>
                 </div>
             </div>
