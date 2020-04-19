@@ -39,4 +39,8 @@ export class EditarDatosComponent implements OnInit {
     this.ciudades = this.departamentos[dep].value;
   }
 
+  seleccionChange( seleccion: string ){
+    console.log(seleccion)
+  }
+
 }

@@ -90,7 +90,7 @@
                 <div>
                     <label class="label">Ciudad de residencia:</label>
                     <div>
-                        <nb-select placeholder="Ciudad" *ngIf="ciudades" [disabled]="isSelectDepartamento">
+                        <nb-select placeholder="Ciudad" *ngIf="ciudades" [disabled]="isSelectDepartamento" (selectedChange)="seleccionChange($event)">
                             <nb-option *ngFor="let city of ciudades">{{ city }}</nb-option>
                         </nb-select>
                     </div>
