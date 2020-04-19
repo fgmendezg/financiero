@@ -5,6 +5,7 @@ import { UserinterfaceComponent } from './userinterface.component'
 import { ComofuncionaComponent } from './comofunciona/comofunciona.component';
 import { HomeuserComponent } from './homeuser/homeuser.component';
 import { PreguntasfrecuentesComponent } from './preguntasfrecuentes/preguntasfrecuentes.component';
+import { UserinterfaceModule } from './userinterface.module';
 
 export const routes: Routes = [
   {

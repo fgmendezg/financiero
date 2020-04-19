@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { UserinterfaceComponent } from './userinterface/userinterface.component';
+import { HomeuserComponent } from './userinterface/homeuser/homeuser.component';
+import { ComofuncionaComponent } from './userinterface/comofunciona/comofunciona.component';
+import { PreguntasfrecuentesComponent } from './userinterface/preguntasfrecuentes/preguntasfrecuentes.component';
 
 export const routes: Routes = [
   {
@@ -14,8 +17,25 @@ export const routes: Routes = [
   }, */
   {
     path: 'dashboard',
-    //component:UserinterfaceComponent
-    loadChildren: () => import('./userinterface/userinterface.module').then(m => m.UserinterfaceModule)
+    component:UserinterfaceComponent,
+    children: [
+      {
+        path: '',
+        component: HomeuserComponent
+      },
+      {
+        path: 'home',
+        component: HomeuserComponent
+      },
+      {
+        path: 'ComofuncionaComponent',
+        component: ComofuncionaComponent
+      },
+      {
+        path: 'frecuentes',
+        component: PreguntasfrecuentesComponent
+      }
+    ]
   },
   {
     path: 'welcome',

@@ -3,6 +3,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { UserinterfaceModule } from './userinterface/userinterface.module'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NbThemeModule, NbLayoutModule, NbMenuModule, NbButtonModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
@@ -10,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NbPasswordAuthStrategy, NbAuthModule, NbDummyAuthStrategy, } from '@nebular/auth';
 import { NbSidebarService, NbCardModule } from '@nebular/theme';
 import { HomeuserModule } from './userinterface/homeuser/homeuser.module';
+
 
 @NgModule({
   declarations: [
@@ -44,7 +46,8 @@ import { HomeuserModule } from './userinterface/homeuser/homeuser.module';
         }),
       ],
       forms: {},
-    })
+    }),
+    UserinterfaceModule
   ],
   providers: [NbSidebarService],
   bootstrap: [AppComponent],
