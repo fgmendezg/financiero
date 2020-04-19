@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { UserinterfaceComponent } from './userinterface/userinterface.component';
 
 export const routes: Routes = [
   {
@@ -7,12 +8,13 @@ export const routes: Routes = [
     //loadChildren: './auth/auth.module#NgxAuthModule'
     loadChildren: () => import('./auth/auth.module').then(m => m.NgxAuthModule)
   },
-  {
+  /* {
     path: '',
     loadChildren: () => import('./userinterface/userinterface.module').then(m => m.UserinterfaceModule)
-  },
+  }, */
   {
     path: 'dashboard',
+    //component:UserinterfaceComponent
     loadChildren: () => import('./userinterface/userinterface.module').then(m => m.UserinterfaceModule)
   },
   {

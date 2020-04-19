@@ -4,14 +4,12 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NbThemeModule, NbLayoutModule, NbMenuModule } from '@nebular/theme';
+import { NbThemeModule, NbLayoutModule, NbMenuModule, NbButtonModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { HttpClientModule } from '@angular/common/http';
 import { NbPasswordAuthStrategy, NbAuthModule, NbDummyAuthStrategy, } from '@nebular/auth';
 import { NbSidebarService, NbCardModule } from '@nebular/theme';
 import { HomeuserModule } from './userinterface/homeuser/homeuser.module';
-//import { UserinterfaceModule } from './userinterface/userinterface.module';
-import { UserinterfaceComponent } from './userinterface/userinterface.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +26,7 @@ import { UserinterfaceComponent } from './userinterface/userinterface.component'
     HttpClientModule,
     NbCardModule,
     HomeuserModule,
+    NbButtonModule,
     NbAuthModule.forRoot({
       strategies: [
         /*NbPasswordAuthStrategy.setup({
@@ -48,8 +47,8 @@ import { UserinterfaceComponent } from './userinterface/userinterface.component'
     })
   ],
   providers: [NbSidebarService],
-  //bootstrap: [AppComponent],
-  bootstrap: [UserinterfaceComponent],
+  bootstrap: [AppComponent],
+  //bootstrap: [UserinterfaceComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule { }
