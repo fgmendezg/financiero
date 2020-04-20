@@ -16,7 +16,7 @@ import { PreguntasfrecuentesModule } from './preguntasfrecuentes/preguntasfrecue
   imports: [
     NbMenuModule,
     CommonModule,
-    RouterModule.forChild(routes), // RouterModule.forRoot(routes, { useHash: true }), if this is your app.module
+    //RouterModule.forChild(routes), // RouterModule.forRoot(routes, { useHash: true }), if this is your app.module
     NbLayoutModule,
     NbSidebarModule, // NbSidebarModule.forRoot(), //if this is your app.module
     NbButtonModule,

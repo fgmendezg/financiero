@@ -1,3 +1,13 @@
+<style>
+h1{
+  text-align: center;
+}
+
+.center{
+  text-align: center;
+}
+</style>
+
 <h1 id="title" class="title">FinanRed</h1>
 <p class="sub-title">Solicita tu crédito en línea</p>
 
@@ -70,7 +80,7 @@
   </div>
 
   <div class="form-control-group accept-group">
-    <nb-checkbox name="rememberMe" [(ngModel)]="user.rememberMe" *ngIf="rememberMe">Recordar Usuario</nb-checkbox>
+    <nb-checkbox name="rememberMe" [(ngModel)]="user.rememberMe" *ngIf="rememberMe">Recordar Usuario</nb-checkbox><br>
     <a class="forgot-password" routerLink="../request-password">Olvidó su Contraseña?</a>
   </div>
 
@@ -101,6 +111,6 @@
   </div>
 </section>
 
-<section class="another-action" aria-label="Register">
+<section class="another-action center" aria-label="Register">
   ¿Tienes una cuenta? <a class="text-link" routerLink="../register">Registrarse</a>
 </section>

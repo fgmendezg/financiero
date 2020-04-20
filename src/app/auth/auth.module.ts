@@ -23,7 +23,7 @@ import { NgxLoginComponent } from './login/login.component';
     NbInputModule,
     NbButtonModule,
     NbCheckboxModule,
-    NgxAuthRoutingModule,
+    //NgxAuthRoutingModule,
 
     NbAuthModule,
   ],

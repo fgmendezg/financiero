@@ -6,14 +6,9 @@ import { ComofuncionaComponent } from './userinterface/comofunciona/comofunciona
 import { PreguntasfrecuentesComponent } from './userinterface/preguntasfrecuentes/preguntasfrecuentes.component';
 
 export const routes: Routes = [
-  {
-    path: 'auth',
-    //loadChildren: './auth/auth.module#NgxAuthModule'
-    loadChildren: () => import('./auth/auth.module').then(m => m.NgxAuthModule)
-  },
   /* {
-    path: '',
-    loadChildren: () => import('./userinterface/userinterface.module').then(m => m.UserinterfaceModule)
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then(m => m.NgxAuthModule)
   }, */
   {
     path: 'dashboard',
