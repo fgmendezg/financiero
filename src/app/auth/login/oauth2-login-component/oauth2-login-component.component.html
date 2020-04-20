@@ -1,0 +1,4 @@
+<!-- <p>Current User Authenticated: {{ !!token }}</p>
+<p>Current User Token: {{ token|json }}</p> -->
+<button nbButton outline status="danger" *ngIf="!token" (click)="login()">Entrar con Google</button>
+<!-- <button nbButton outline status="danger" *ngIf="token" (click)="logout()">Cerrar Sesion</button> -->

@@ -6,6 +6,10 @@ h1{
 .center{
   text-align: center;
 }
+
+.botonesaccesotercero{
+  margin-top: 20px;
+}
 </style>
 
 <h1 id="title" class="title">FinanRed</h1>
@@ -113,4 +117,8 @@ h1{
 
 <section class="another-action center" aria-label="Register">
   ¿Tienes una cuenta? <a class="text-link" routerLink="../register">Registrarse</a>
+</section>
+
+<section class="another-action center botonesaccesotercero">
+  <app-oauth2-login-component></app-oauth2-login-component>
 </section>

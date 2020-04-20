@@ -4,6 +4,7 @@ import { UserinterfaceComponent } from './userinterface/userinterface.component'
 import { HomeuserComponent } from './userinterface/homeuser/homeuser.component';
 import { ComofuncionaComponent } from './userinterface/comofunciona/comofunciona.component';
 import { PreguntasfrecuentesComponent } from './userinterface/preguntasfrecuentes/preguntasfrecuentes.component';
+import { OAuth2CallbackComponentComponent } from './auth/login/oauth2-callback-component/oauth2-callback-component.component';
 
 export const routes: Routes = [
   /* {
@@ -12,7 +13,7 @@ export const routes: Routes = [
   }, */
   {
     path: 'dashboard',
-    component:UserinterfaceComponent,
+    component: UserinterfaceComponent,
     children: [
       {
         path: '',
@@ -31,6 +32,10 @@ export const routes: Routes = [
         component: PreguntasfrecuentesComponent
       }
     ]
+  },
+  {
+    path: 'callback',
+    component: OAuth2CallbackComponentComponent,
   },
   {
     path: 'welcome',

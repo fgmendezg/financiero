@@ -8,14 +8,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NbThemeModule, NbLayoutModule, NbMenuModule, NbButtonModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { HttpClientModule } from '@angular/common/http';
-import { NbPasswordAuthStrategy, NbAuthModule, NbDummyAuthStrategy, } from '@nebular/auth';
+import { NbPasswordAuthStrategy, NbAuthModule, NbDummyAuthStrategy, NbOAuth2AuthStrategy, NbOAuth2ResponseType } from '@nebular/auth';
 import { NbSidebarService, NbCardModule } from '@nebular/theme';
 import { HomeuserModule } from './userinterface/homeuser/homeuser.module';
+import { OAuth2CallbackComponentComponent } from './auth/login/oauth2-callback-component/oauth2-callback-component.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    OAuth2CallbackComponentComponent
   ],
   imports: [
     NbMenuModule.forRoot(),
@@ -41,9 +43,20 @@ import { HomeuserModule } from './userinterface/homeuser/homeuser.module';
             },
           }
         }),*/
-        NbDummyAuthStrategy.setup({
+        /* NbDummyAuthStrategy.setup({
           name: 'email'
-        }),
+        }), */
+        NbOAuth2AuthStrategy.setup({
+          name: 'google',
+          clientId: '104502519653-uohig6lveg0reet2hsherfit0gdm8ln2.apps.googleusercontent.com',
+          clientSecret: '',
+          authorize: {
+            endpoint: 'https://accounts.google.com/o/oauth2/v2/auth',
+            responseType: NbOAuth2ResponseType.TOKEN,
+            scope: 'https://www.googleapis.com/auth/userinfo.profile',
+            redirectUri: 'http://localhost:4200/callback'
+          }
+        })
       ],
       forms: {},
     }),
