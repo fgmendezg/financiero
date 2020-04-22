@@ -20,6 +20,7 @@ export class UserinterfaceComponent implements OnInit {
   items = [];
   user = {};
   dateUser = {}
+  pictureUser = "";
 
   loginItems: NbMenuItem[] = [
     {
@@ -58,9 +59,9 @@ export class UserinterfaceComponent implements OnInit {
 
         if (token.isValid()) {
           this.user = token.getPayload(); // here we receive a payload from the token and assigns it to our `user` variable 
-          console.log(this.user["access_token"]);
+          //console.log(this.user["access_token"]);
           this.getBasicInformation(this.user["access_token"]);
-          console.log(this.dateUser);
+          //console.log(this.dateUser["name"]);
         }
 
       });
@@ -73,6 +74,7 @@ export class UserinterfaceComponent implements OnInit {
 
   // Envia una solicitud http mediante el token que recibe,
   // para obtener los datos basicos del usuario.
+  // TODO: Podria implementarce asincronicamente?
   getBasicInformation( access_token:string ){
     var request = new XMLHttpRequest();
     request.open('GET', 'https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=' + access_token, false);
@@ -85,7 +87,8 @@ export class UserinterfaceComponent implements OnInit {
     } */
     request.send();
     if(request.status == 200){
-      this.dateUser = request.responseText;
+      this.dateUser = JSON.parse(request.responseText);
+      this.pictureUser = this.dateUser["picture"];
     }
   }
 

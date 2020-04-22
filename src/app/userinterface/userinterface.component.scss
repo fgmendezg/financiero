@@ -12,12 +12,19 @@ li{
     padding: 6px;   
 }
 
-.relativePosition {
-    padding-left: 230px;
-    padding-top: 0px;
-  }
+.contenedor{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.alineacionDateUser{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
 
 // Permite separa un div a la izquiera y otro a la derecha en el nb-layout-header
-:host nb-layout-header div:last-child {
+/* :host nb-layout-header div:last-child {
     margin-left: auto;
-}
+} */

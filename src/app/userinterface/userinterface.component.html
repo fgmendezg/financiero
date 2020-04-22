@@ -1,19 +1,24 @@
 <nb-layout>
   <nb-layout-header fixed>
+    <div class="contenedor">
 
-    <div>
-      <h1>FinanRed</h1>
+      <div>
+        <h1>FinanRed</h1>
+      </div>
+
+      <div class="alineacionDateUser">
+        <ul class="menu">
+          <li>
+            <nb-icon icon="bell-outline" status="basic"></nb-icon>
+          </li>
+          <li>{{dateUser["name"]}}</li>
+        </ul>
+        <nb-user size="large" [picture]="pictureUser" onlyPicture>
+        </nb-user>
+      </div>
+
     </div>
 
-    <div>
-      <!-- <ul class="menu">
-        <li>
-          <nb-icon icon="bell-outline" status="basic"></nb-icon>
-        </li>
-        <li>Fredy Méndez</li>
-      </ul> -->
-      
-    </div>
 
     <!-- Por implementar NbActionsComponent por ahora no encuentra los iconos -->
     <!--nb-actions size="small">
