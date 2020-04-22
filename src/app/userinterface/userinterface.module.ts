@@ -1,17 +1,21 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router'; // we also need angular router for Nebular to function properly
-import { NbSidebarModule, NbLayoutModule, NbButtonModule, NbMenuItem, NbMenuModule, NbUserModule } from '@nebular/theme';
+import { NbSidebarModule, NbLayoutModule, NbButtonModule, NbTabsetModule, NbMenuModule, NbUserModule, NbInputModule } from '@nebular/theme';
 import { UserinterfaceComponent } from './userinterface.component';
 import { routes } from  './userinterface-routing.module';
-import { NbIconModule, NbActionsModule, NbCardModule } from '@nebular/theme';
+import { NbIconModule, NbActionsModule, NbCardModule, NbSelectModule } from '@nebular/theme';
 import { ComofuncionaModule } from './comofunciona/comofunciona.module'
 import { HomeuserModule } from './homeuser/homeuser.module';
 import { PreguntasfrecuentesModule } from './preguntasfrecuentes/preguntasfrecuentes.module';
+import { TabsethomeComponent } from './tabsethome/tabsethome.component';
+import { DatosfinancierosComponent } from './datosfinancieros/datosfinancieros.component';
 
 @NgModule({
   declarations: [
-    UserinterfaceComponent
+    UserinterfaceComponent,
+    TabsethomeComponent,
+    DatosfinancierosComponent
   ],
   imports: [
     NbMenuModule,
@@ -26,7 +30,10 @@ import { PreguntasfrecuentesModule } from './preguntasfrecuentes/preguntasfrecue
     HomeuserModule,
     NbCardModule,
     PreguntasfrecuentesModule,
-    NbUserModule
+    NbUserModule,
+    NbTabsetModule,
+    NbInputModule,
+    NbSelectModule
   ],
   exports: [
     UserinterfaceComponent

@@ -24,7 +24,7 @@ export class UserinterfaceComponent implements OnInit {
 
   loginItems: NbMenuItem[] = [
     {
-      title: 'Editar Perfil',
+      title: 'Tus Datos',
       icon: 'person-outline',
       url: '/dashboard/home'
     },

@@ -20,7 +20,9 @@ import { EditarDatosComponent } from './formulario/editar-datos/editar-datos.com
     NbSelectModule
   ],
   exports: [
-    ComofuncionaComponent
+    ComofuncionaComponent,
+    FormularioComponent,
+    AdDocumentosComponent
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })

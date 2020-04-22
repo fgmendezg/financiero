@@ -1,0 +1,19 @@
+@import '@nebular/theme/styles/global/_breakpoints';
+
+.horizontal{
+    width: 100%;
+}
+
+.inputsbasic{
+    margin-top: 0px;
+    margin-right: 1%;
+    margin-bottom: 0px;
+    margin-left: 1%;
+    width: 100%;
+}
+
+.rejilla{
+    display: grid;
+    grid-template-columns: auto auto;
+    margin-bottom: 20px;
+}

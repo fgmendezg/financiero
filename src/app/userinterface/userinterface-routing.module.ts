@@ -1,16 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
-import { UserinterfaceComponent } from './userinterface.component'
 import { ComofuncionaComponent } from './comofunciona/comofunciona.component';
 import { HomeuserComponent } from './homeuser/homeuser.component';
 import { PreguntasfrecuentesComponent } from './preguntasfrecuentes/preguntasfrecuentes.component';
-import { UserinterfaceModule } from './userinterface.module';
+import { TabsethomeComponent } from './tabsethome/tabsethome.component'
 
 export const routes: Routes = [
   {
     path: '',
-    component: HomeuserComponent
+    component: TabsethomeComponent
   },
   {
     path: 'ComofuncionaComponent',
@@ -18,7 +16,7 @@ export const routes: Routes = [
   },
   {
     path: 'home',
-    component:HomeuserComponent
+    component:TabsethomeComponent
   },
   {
     path: 'frecuentes',
