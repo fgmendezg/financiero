@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/
 import { NbSidebarService } from '@nebular/theme';
 import { NbMenuItem, NbMenuService } from '@nebular/theme';
 import { NbIconConfig } from '@nebular/theme';
+import { NbAuthOAuth2Token, NbAuthService } from '@nebular/auth';
 
 var loginState = true;
 
@@ -17,28 +18,8 @@ export class UserinterfaceComponent implements OnInit {
   disabledIconConfig: NbIconConfig = { icon: 'settings-2-outline', pack: 'eva' };
 
   items = [];
-
-  WelItems: NbMenuItem[] = [
-    {
-      title: 'Inicia Sesion',
-      icon: 'person-done-outline',
-      url: 'auth/login'
-    },
-    {
-      title: '¿Como pedir tu credito?',
-      icon: 'checkmark-circle-2-outline',
-      url: '/dashboard/ComofuncionaComponent'
-    },
-    {
-      title: 'Pide tu Credito',
-      icon: 'clipboard-outline'
-    },
-    {
-      title: 'Preguntas frecuentes',
-      icon: { icon: 'checkmark-outline', pack: 'eva' },
-      url: '/dashboard/frecuentes'
-    }
-  ];
+  user = {};
+  dateUser = {}
 
   loginItems: NbMenuItem[] = [
     {
@@ -66,14 +47,23 @@ export class UserinterfaceComponent implements OnInit {
     },
   ];
 
-  constructor(private sidebarService: NbSidebarService, private nbMenuService: NbMenuService) {
+  constructor(private sidebarService: NbSidebarService, private nbMenuService: NbMenuService, private authService: NbAuthService) {
 
-    if ( !loginState ){
-      this.nbMenuService.addItems(this.WelItems);
-    }else{
-      this.clearItems;
-      this.nbMenuService.addItems(this.loginItems);
-    }
+    this.clearItems;
+    this.nbMenuService.addItems(this.loginItems);
+
+    // Obtiene los datos basicos de la autenticación.
+    this.authService.onTokenChange()
+      .subscribe((token: NbAuthOAuth2Token) => {
+
+        if (token.isValid()) {
+          this.user = token.getPayload(); // here we receive a payload from the token and assigns it to our `user` variable 
+          console.log(this.user["access_token"]);
+          this.getBasicInformation(this.user["access_token"]);
+          console.log(this.dateUser);
+        }
+
+      });
 
   }
 
@@ -81,12 +71,25 @@ export class UserinterfaceComponent implements OnInit {
     this.items = [];
   }
 
-  public setStateLogin(newState:boolean){
-    loginState = newState;
-    console.log(loginState);
+  // Envia una solicitud http mediante el token que recibe,
+  // para obtener los datos basicos del usuario.
+  getBasicInformation( access_token:string ){
+    var request = new XMLHttpRequest();
+    request.open('GET', 'https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=' + access_token, false);
+    /* request.onreadystatechange = function (aEvt) {
+      if (request.readyState == 4) {
+        if(request.status == 200){
+          console.log(request.responseText);
+        }
+     }
+    } */
+    request.send();
+    if(request.status == 200){
+      this.dateUser = request.responseText;
+    }
   }
 
   ngOnInit(): void {
   }
-
+  
 }

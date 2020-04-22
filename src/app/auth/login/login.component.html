@@ -10,9 +10,15 @@ h1{
 .botonesaccesotercero{
   margin-top: 20px;
 }
+
+.centerImage{
+  display: block;
+  margin: auto;
+}
 </style>
 
-<h1 id="title" class="title">FinanRed</h1>
+<!-- <h1 id="title" class="title">FinanRed</h1> -->
+<img src="assets/background/finanred.png" alt="finanred.png" width="200" height="42" class="centerImage">
 <p class="sub-title">Solicita tu crédito en línea</p>
 
 <nb-alert *ngIf="showMessages.error && errors?.length && !submitted" outline="danger" role="alert">
