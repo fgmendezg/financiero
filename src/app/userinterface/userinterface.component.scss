@@ -1,4 +1,5 @@
 @import '@nebular/theme/styles/global/_breakpoints';
+@import '../../themes.scss';
 
 .menu {
     list-style: none;
@@ -23,6 +24,20 @@ li{
     justify-content: flex-start;
     align-items: center;
 }
+
+@include nb-install-component() {
+    .menu-sidebar ::ng-deep .scrollable {
+      padding-top: nb-theme(layout-padding-top);
+      padding-left: 0px;
+      padding-right: 0px;
+    }
+
+    .layoutPrincipal ::ng-deep .columns nb-layout-column {
+        padding-top: 0px;
+        background-color: red;
+    }
+}
+
 
 // Permite separa un div a la izquiera y otro a la derecha en el nb-layout-header
 /* :host nb-layout-header div:last-child {
