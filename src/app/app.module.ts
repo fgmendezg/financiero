@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserinterfaceModule } from './userinterface/userinterface.module'
@@ -13,6 +12,8 @@ import { NbSidebarService, NbCardModule } from '@nebular/theme';
 import { HomeuserModule } from './userinterface/homeuser/homeuser.module';
 import { OAuth2CallbackComponentComponent } from './auth/login/oauth2-callback-component/oauth2-callback-component.component';
 
+// Servicios
+import { ApirestService } from './services/apirest.service';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,7 @@ import { OAuth2CallbackComponentComponent } from './auth/login/oauth2-callback-c
     }),
     UserinterfaceModule
   ],
-  providers: [NbSidebarService],
+  providers: [NbSidebarService, ApirestService],
   bootstrap: [AppComponent],
   //bootstrap: [UserinterfaceComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]

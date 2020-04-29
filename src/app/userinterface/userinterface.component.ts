@@ -4,6 +4,9 @@ import { NbMenuItem, NbMenuService } from '@nebular/theme';
 import { NbIconConfig } from '@nebular/theme';
 import { NbAuthOAuth2Token, NbAuthService } from '@nebular/auth';
 
+//Servicios
+import { ApirestService } from '../services/apirest.service';
+
 var loginState = true;
 
 @Component({
@@ -21,6 +24,7 @@ export class UserinterfaceComponent implements OnInit {
   user = {};
   dateUser = {}
   pictureUser = "";
+  dateUserApi:any = [];
 
   loginItems: NbMenuItem[] = [
     {
@@ -48,10 +52,23 @@ export class UserinterfaceComponent implements OnInit {
     },
   ];
 
-  constructor(private sidebarService: NbSidebarService, private nbMenuService: NbMenuService, private authService: NbAuthService) {
+  constructor(private sidebarService: NbSidebarService, private nbMenuService: NbMenuService,
+    private authService: NbAuthService, private apiService: ApirestService) {
 
     this.clearItems;
     this.nbMenuService.addItems(this.loginItems);
+
+
+    this.apiService.getUsers()
+      .subscribe(
+        (data) => { // Success
+          this.dateUserApi = data;
+          console.log(this.dateUserApi);
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
 
     // Obtiene los datos basicos de la autenticación.
     this.authService.onTokenChange()
@@ -75,7 +92,7 @@ export class UserinterfaceComponent implements OnInit {
   // Envia una solicitud http mediante el token que recibe,
   // para obtener los datos basicos del usuario.
   // TODO: Podria implementarce asincronicamente?
-  getBasicInformation( access_token:string ){
+  getBasicInformation(access_token: string) {
     var request = new XMLHttpRequest();
     request.open('GET', 'https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=' + access_token, false);
     /* request.onreadystatechange = function (aEvt) {
@@ -86,7 +103,7 @@ export class UserinterfaceComponent implements OnInit {
      }
     } */
     request.send();
-    if(request.status == 200){
+    if (request.status == 200) {
       this.dateUser = JSON.parse(request.responseText);
       this.pictureUser = this.dateUser["picture"];
     }
@@ -94,5 +111,5 @@ export class UserinterfaceComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  
+
 }

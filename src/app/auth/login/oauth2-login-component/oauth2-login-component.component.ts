@@ -14,7 +14,7 @@ export class OAuth2LoginComponentComponent implements OnDestroy {
 
   private destroy$ = new Subject<void>();
 
-  constructor(private authService: NbAuthService) {
+  constructor( private authService: NbAuthService ) {
     this.authService.onTokenChange()
       .pipe(takeUntil(this.destroy$))
       .subscribe((token: NbAuthOAuth2Token) => {
