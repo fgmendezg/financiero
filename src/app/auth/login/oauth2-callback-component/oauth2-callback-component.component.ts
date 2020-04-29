@@ -4,6 +4,9 @@ import { Router } from '@angular/router';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
+//Srevicios
+import { ApirestService } from '../../../services/apirest.service';
+
 @Component({
   selector: 'app-oauth2-callback-component',
   templateUrl: './oauth2-callback-component.component.html',
@@ -12,13 +15,16 @@ import { Subject } from 'rxjs';
 export class OAuth2CallbackComponentComponent implements OnDestroy {
   private destroy$ = new Subject<void>();
 
-  constructor(private authService: NbAuthService, private router: Router) {
+  constructor(private authService: NbAuthService, private router: Router, 
+    private apiService: ApirestService) {
+
     this.authService.authenticate('google')
       .pipe(takeUntil(this.destroy$))
       .subscribe((authResult: NbAuthResult) => {
         if (authResult.isSuccess()) {
           console.log("dashboard");
-          this.router.navigateByUrl('/dashboard');
+          this.apiService.getDateGoogletoken();
+          //this.router.navigateByUrl('/dashboard');
         }
       });
   }

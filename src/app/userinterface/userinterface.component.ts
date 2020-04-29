@@ -24,7 +24,7 @@ export class UserinterfaceComponent implements OnInit {
   user = {};
   dateUser = {}
   pictureUser = "";
-  dateUserApi:any = [];
+  dateUserApi: any = [];
 
   loginItems: NbMenuItem[] = [
     {
@@ -70,43 +70,14 @@ export class UserinterfaceComponent implements OnInit {
         }
       );
 
-    // Obtiene los datos basicos de la autenticación.
-    this.authService.onTokenChange()
-      .subscribe((token: NbAuthOAuth2Token) => {
-
-        if (token.isValid()) {
-          this.user = token.getPayload(); // here we receive a payload from the token and assigns it to our `user` variable 
-          //console.log(this.user["access_token"]);
-          this.getBasicInformation(this.user["access_token"]);
-          //console.log(this.dateUser["name"]);
-        }
-
-      });
+    this.dateUser = this.apiService.getDateUser();
+    this.pictureUser = this.dateUser["picture"];
+    console.log(this.dateUser);
 
   }
 
   clearItems() {
     this.items = [];
-  }
-
-  // Envia una solicitud http mediante el token que recibe,
-  // para obtener los datos basicos del usuario.
-  // TODO: Podria implementarce asincronicamente?
-  getBasicInformation(access_token: string) {
-    var request = new XMLHttpRequest();
-    request.open('GET', 'https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=' + access_token, false);
-    /* request.onreadystatechange = function (aEvt) {
-      if (request.readyState == 4) {
-        if(request.status == 200){
-          console.log(request.responseText);
-        }
-     }
-    } */
-    request.send();
-    if (request.status == 200) {
-      this.dateUser = JSON.parse(request.responseText);
-      this.pictureUser = this.dateUser["picture"];
-    }
   }
 
   ngOnInit(): void {
