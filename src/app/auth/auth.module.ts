@@ -14,6 +14,7 @@ import {
 } from '@nebular/theme';
 import { NgxLoginComponent } from './login/login.component';
 import { OAuth2LoginComponentComponent } from './login/oauth2-login-component/oauth2-login-component.component';
+import { RegisterComponent } from './register/register.component';
 //import { OAuth2CallbackComponentComponent } from './login/oauth2-callback-component/oauth2-callback-component.component';
 
 
@@ -35,11 +36,13 @@ import { OAuth2LoginComponentComponent } from './login/oauth2-login-component/oa
     // ... here goes our new components
     NgxLoginComponent,
     OAuth2LoginComponentComponent,
+    RegisterComponent,
     //OAuth2CallbackComponentComponent
   ],
   exports: [
     NgxLoginComponent,
-    OAuth2LoginComponentComponent
+    OAuth2LoginComponentComponent,
+    RegisterComponent
   ]
 })
 export class NgxAuthModule {

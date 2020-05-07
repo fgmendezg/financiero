@@ -1,17 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { UserinterfaceComponent } from './userinterface/userinterface.component';
-import { HomeuserComponent } from './userinterface/homeuser/homeuser.component';
 import { ComofuncionaComponent } from './userinterface/comofunciona/comofunciona.component';
 import { PreguntasfrecuentesComponent } from './userinterface/preguntasfrecuentes/preguntasfrecuentes.component';
 import { OAuth2CallbackComponentComponent } from './auth/login/oauth2-callback-component/oauth2-callback-component.component';
 import { TabsethomeComponent } from './userinterface/tabsethome/tabsethome.component'
+import { WelcomeComponent } from './welcome/welcome.component'
+import { NgxLoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
 
 export const routes: Routes = [
-  /* {
-    path: 'auth',
-    loadChildren: () => import('./auth/auth.module').then(m => m.NgxAuthModule)
-  }, */
   {
     path: 'dashboard',
     component: UserinterfaceComponent,
@@ -40,8 +38,18 @@ export const routes: Routes = [
   },
   {
     path: 'welcome',
-    loadChildren: () => import('./welcome/welcome.module').then(m => m.WelcomeModule)
-    //component: UserinterfaceComponent
+    //loadChildren: () => import('./welcome/welcome.module').then(m => m.WelcomeModule)
+    component: WelcomeComponent,
+    children: [
+      {
+        path: '',
+        component: NgxLoginComponent
+      },
+      {
+        path: 'register',
+        component: RegisterComponent
+      }
+    ]
   }
 ];
 

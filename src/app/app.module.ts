@@ -11,6 +11,7 @@ import { NbPasswordAuthStrategy, NbAuthModule, NbDummyAuthStrategy, NbOAuth2Auth
 import { NbSidebarService, NbCardModule } from '@nebular/theme';
 import { HomeuserModule } from './userinterface/homeuser/homeuser.module';
 import { OAuth2CallbackComponentComponent } from './auth/login/oauth2-callback-component/oauth2-callback-component.component';
+import { WelcomeModule } from './welcome/welcome.module'
 
 // Servicios
 import { ApirestService } from './services/apirest.service';
@@ -61,7 +62,8 @@ import { ApirestService } from './services/apirest.service';
       ],
       forms: {},
     }),
-    UserinterfaceModule
+    UserinterfaceModule,
+    WelcomeModule
   ],
   providers: [NbSidebarService, ApirestService],
   bootstrap: [AppComponent],

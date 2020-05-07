@@ -52,9 +52,9 @@ h1{
            [required]="getConfigValue('forms.validation.email.required')"
            [attr.aria-invalid]="email.invalid && email.touched ? true : null">
     <ng-container *ngIf="email.invalid && email.touched">
-      <p class="error-message" *ngIf="email.errors?.required">
+      <!-- <p class="error-message" *ngIf="email.errors?.required">
         El correo Electrónico necesario!
-      </p>
+      </p> -->
       <p class="error-message" *ngIf="email.errors?.pattern">
         El correo electrónico debe Existir!
       </p>
@@ -77,9 +77,9 @@ h1{
            [maxlength]="getConfigValue('forms.validation.password.maxLength')"
            [attr.aria-invalid]="password.invalid && password.touched ? true : null">
     <ng-container *ngIf="password.invalid && password.touched ">
-      <p class="error-message" *ngIf="password.errors?.required">
+      <!-- <p class="error-message" *ngIf="password.errors?.required">
         Se necesita Contraseña!
-      </p>
+      </p> -->
       <p class="error-message" *ngIf="password.errors?.minlength || password.errors?.maxlength">
         Password should contains
         from {{ getConfigValue('forms.validation.password.minLength') }}
@@ -122,7 +122,7 @@ h1{
 </section>
 
 <section class="another-action center" aria-label="Register">
-  ¿Tienes una cuenta? <a class="text-link" routerLink="../register">Registrarse</a>
+  ¿Tienes una cuenta? <a class="text-link" routerLink="register">Registrarse</a>
 </section>
 
 <section class="another-action center botonesaccesotercero">

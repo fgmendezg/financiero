@@ -3,22 +3,26 @@
     <div class="rejilla">
         <div>
             <label class="label">¿Es empleado activo o pensionando?</label>
-            <nb-select class="inputsbasic">
-                <nb-option value="0">Activo</nb-option>
-                <nb-option value="1">Pensionado</nb-option>
-            </nb-select>
+            <div class="col-sm-9">
+                <nb-select class="inputsbasic">
+                    <nb-option value="0">Activo</nb-option>
+                    <nb-option value="1">Pensionado</nb-option>
+                </nb-select>
+            </div>
         </div>
         <div>
             <label class="label">¿A que sector pertenece?</label>
-            <nb-select class="inputsbasic" *ngIf="sector">
-                <nb-option *ngFor="let sec of sector" [value]="sec">{{ sec }}</nb-option>
-            </nb-select>
+            <div class="col-sm-9">
+                <nb-select class="inputsbasic" *ngIf="sector">
+                    <nb-option *ngFor="let sec of sector" [value]="sec">{{ sec }}</nb-option>
+                </nb-select>
+            </div>
         </div>
     </div>
 
     <div>
         <label class="label">Selecciona su convenio</label>
-        <div>
+        <div class="col-sm-9">
             <nb-select class="inputsbasic" *ngIf="convenios">
                 <nb-option *ngFor="let convenio of convenios" [value]="convenio">{{ convenio }}</nb-option>
             </nb-select>

@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "prestamo82"
+    }
+  },
+  "defaultProject": "prestamo82",
+  "cli": {
+    "analytics": false
+  }
 }
