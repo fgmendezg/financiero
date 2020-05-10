@@ -13,12 +13,8 @@ export class ConexionregistroComponent implements OnInit {
   ngOnInit(): void {}
 
   public register(nombres: string[], apellidos: string[], email: string, pass: string){
-    console.log(nombres);
-    console.log(apellidos);
-    console.log(email);
-    console.log(pass);
-
-    //var res = this.apiService.newUser(f.value.email, losNombres[0], losNombres[1], losApellidos[0], losApellidos[1], f.value.password);
+    var res = this.apiService.newUser(email, nombres[0], nombres[1], apellidos[0], apellidos[1], pass);
+    console.log("RES: " + res);
   }
 
 }

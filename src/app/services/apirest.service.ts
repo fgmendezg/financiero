@@ -31,7 +31,8 @@ export class ApirestService {
     var response = {}
 
     return this.http.post<any>(this.urlBackend + 
-      '/fdusuarios?email=fgmendezg3@unal.edu.co&primer_nombre=fredy&segundo_nombre=gerardo&primer_apellido=mendez&segundo_apellido=gonzalez&password=Meconio3', {}).subscribe(data => {
+      '/fdusuarios?email=' + email + '&primer_nombre=' + primerNombre + '&segundo_nombre='+ segundoNombre +'&primer_apellido=' + primerApellido 
+      + '&segundo_apellido=' + segundoApellido + '&password=' + pass + '', {}).subscribe(data => {
         response = data;
     });
   }
