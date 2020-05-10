@@ -59,7 +59,7 @@ export class UserinterfaceComponent implements OnInit {
     this.nbMenuService.addItems(this.loginItems);
 
 
-    this.apiService.getUsers()
+    /* this.apiService.getNameDocs()
       .subscribe(
         (data) => { // Success
           this.dateUserApi = data;
@@ -68,7 +68,7 @@ export class UserinterfaceComponent implements OnInit {
         (error) => {
           console.error(error);
         }
-      );
+      ); */
 
     this.dateUser = this.apiService.getDateUser();
     this.pictureUser = this.dateUser["picture"];

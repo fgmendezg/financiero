@@ -20,6 +20,22 @@ export class ApirestService {
     return this.http.get(this.urlBackend + '/fdusuarios');
   }
 
+  // TODO: Eliminar, solo se creo para probar los cors sin tener token
+  // Obtiene todos los namedocs
+  getNameDocs(){
+    return this.http.get(this.urlBackend + '/fdnamedocs');
+  }
+
+  // Llama al back para crear un nuevo usuario creado desde la pagina de registro
+  newUser( email: string, primerNombre: string, segundoNombre: string, primerApellido: string, segundoApellido: string, pass: string ){
+    var response = {}
+
+    return this.http.post<any>(this.urlBackend + 
+      '/fdusuarios?email=fgmendezg3@unal.edu.co&primer_nombre=fredy&segundo_nombre=gerardo&primer_apellido=mendez&segundo_apellido=gonzalez&password=Meconio3', {}).subscribe(data => {
+        response = data;
+    });
+  }
+
   // Registra en el back un usuario con los datos que estan en la variables dateUser
   autenticacion(){
     //console.log(this.dateUser);
