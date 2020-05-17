@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { NbAuthOAuth2Token, NbAuthService } from '@nebular/auth';
 import { Router } from '@angular/router';
+import { catchError } from 'rxjs/operators';
+import { Observable, Observer, throwError } from 'rxjs';
+//import { resolve } from 'dns';
+import { rejects } from 'assert';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +15,8 @@ export class ApirestService {
   private urlBackend = 'http://127.0.0.1:3000';
   private infoToken = {}
   private dateUser = {}
+
+  private response;
 
   constructor(protected http: HttpClient, private authService: NbAuthService, private router: Router) {
     //console.log("Apirestservices");
@@ -22,23 +28,64 @@ export class ApirestService {
 
   // TODO: Eliminar, solo se creo para probar los cors sin tener token
   // Obtiene todos los namedocs
-  getNameDocs(){
+  getNameDocs() {
     return this.http.get(this.urlBackend + '/fdnamedocs');
   }
 
   // Llama al back para crear un nuevo usuario creado desde la pagina de registro
-  newUser( email: string, primerNombre: string, segundoNombre: string, primerApellido: string, segundoApellido: string, pass: string ){
-    var response = {}
+  // TODO: Deberia realizar un hash de la contraseña antes de enviarla al back
+  newUser(email: string, primerNombre: string, segundoNombre: string, primerApellido: string, segundoApellido: string, pass: string) {
 
-    return this.http.post<any>(this.urlBackend + 
-      '/fdusuarios?email=' + email + '&primer_nombre=' + primerNombre + '&segundo_nombre='+ segundoNombre +'&primer_apellido=' + primerApellido 
-      + '&segundo_apellido=' + segundoApellido + '&password=' + pass + '', {}).subscribe(data => {
-        response = data;
-    });
+    let promise = new Promise((resolve, reject) => {
+
+    this.http.post<any>(this.urlBackend +
+      '/fdusuarios?email=' + email + '&primer_nombre=' + primerNombre + '&segundo_nombre=' + segundoNombre + '&primer_apellido=' + primerApellido
+      + '&segundo_apellido=' + segundoApellido + '&password=' + pass + '', {}).toPromise().then(
+          res => {
+            this.response = res;
+            resolve();
+          },
+          error => {
+            this.response = error
+            reject('Error la registrar usuario');
+          }
+        )
+    })
+    return promise;
+
+      /* .subscribe({
+        next: data => this.response = data,
+        error: error => {
+          console.log("Hubo un error");
+          this.response = error
+          //this.setResponse(error);
+        }
+      }) */
+   /*  .pipe(
+      data => this.response = data,
+      catchError((err) => {
+        console.log('error caught in service')
+        return throwError(err);
+      })
+    ) */
+
+  }
+
+  resetResponse() {
+    this.response = undefined;
+  }
+
+  getResponse() {
+    return this.response;
+  }
+
+  handleError(error: HttpErrorResponse) {
+    console.log("Error: " + error)
+
   }
 
   // Registra en el back un usuario con los datos que estan en la variables dateUser
-  autenticacion(){
+  autenticacion() {
     //console.log(this.dateUser);
 
     //TODO: Me registro, o valido existencia.
@@ -49,7 +96,7 @@ export class ApirestService {
 
   // Regresa los datos basicos necesarios para el dasboard
   // Ya debe estar autenticado
-  getDateUser(){
+  getDateUser() {
     this.getDateGoogletoken();
     return this.dateUser;
   }
