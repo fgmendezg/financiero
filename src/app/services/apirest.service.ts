@@ -2,10 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { NbAuthOAuth2Token, NbAuthService } from '@nebular/auth';
 import { Router } from '@angular/router';
-import { catchError } from 'rxjs/operators';
-import { Observable, Observer, throwError } from 'rxjs';
-//import { resolve } from 'dns';
-import { rejects } from 'assert';
 
 @Injectable({
   providedIn: 'root'
@@ -38,9 +34,9 @@ export class ApirestService {
 
     let promise = new Promise((resolve, reject) => {
 
-    this.http.post<any>(this.urlBackend +
-      '/fdusuarios?email=' + email + '&primer_nombre=' + primerNombre + '&segundo_nombre=' + segundoNombre + '&primer_apellido=' + primerApellido
-      + '&segundo_apellido=' + segundoApellido + '&password=' + pass + '', {}).toPromise().then(
+      this.http.post<any>(this.urlBackend +
+        '/fdusuarios?email=' + email + '&primer_nombre=' + primerNombre + '&segundo_nombre=' + segundoNombre + '&primer_apellido=' + primerApellido
+        + '&segundo_apellido=' + segundoApellido + '&password=' + pass + '', {}).toPromise().then(
           res => {
             this.response = res;
             resolve();
@@ -53,22 +49,38 @@ export class ApirestService {
     })
     return promise;
 
-      /* .subscribe({
-        next: data => this.response = data,
-        error: error => {
-          console.log("Hubo un error");
-          this.response = error
-          //this.setResponse(error);
-        }
-      }) */
-   /*  .pipe(
-      data => this.response = data,
-      catchError((err) => {
-        console.log('error caught in service')
-        return throwError(err);
-      })
-    ) */
+    /* .subscribe({
+      next: data => this.response = data,
+      error: error => {
+        console.log("Hubo un error");
+        this.response = error
+        //this.setResponse(error);
+      }
+    }) */
+    /*  .pipe(
+       data => this.response = data,
+       catchError((err) => {
+         console.log('error caught in service')
+         return throwError(err);
+       })
+     ) */
 
+  }
+
+  //Obtiene token para iniciar sesion de forma convencional
+  getTokenLogin(email: string, pass: string) {
+    this.http.post(this.urlBackend + '/fdusuario_token',
+      {
+        "auth": {
+          "email": email,
+          "password": pass
+        }
+
+      }).subscribe((resp: any)=>{
+        localStorage.setItem('auth_token', resp.jwt);
+      })
+
+    //TODO: Capturar errores, que pasa cuando el usuario o contraseñas son erroneos
   }
 
   resetResponse() {

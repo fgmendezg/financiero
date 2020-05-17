@@ -35,16 +35,20 @@ import { ApirestService } from './services/apirest.service';
     NbButtonModule,
     NbAuthModule.forRoot({
       strategies: [
-        /*NbPasswordAuthStrategy.setup({
+        /* NbPasswordAuthStrategy.setup({
           name: 'email',
-          
+          baseEndpoint: 'http://127.0.0.1:3000',
           login: {
+            //endpoint: '/fdusuario_token',
+            endpoint: '/fdusuarios/rshow/',
+            method: 'post',
+           
             redirect: {
-              success: '/dashboard/',
+              success: '/dashboard',
               failure: null, // stay on the same page
             },
           }
-        }),*/
+        }), */
         /* NbDummyAuthStrategy.setup({
           name: 'email'
         }), */

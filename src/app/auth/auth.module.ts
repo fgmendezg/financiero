@@ -16,6 +16,7 @@ import { NgxLoginComponent } from './login/login.component';
 import { OAuth2LoginComponentComponent } from './login/oauth2-login-component/oauth2-login-component.component';
 import { RegisterComponent } from './register/register.component';
 import { ConexionregistroComponent } from './register/conexionregistro/conexionregistro.component';
+import { ConexionloginComponent } from './login/conexionlogin/conexionlogin.component';
 //import { OAuth2CallbackComponentComponent } from './login/oauth2-callback-component/oauth2-callback-component.component';
 
 
@@ -39,6 +40,7 @@ import { ConexionregistroComponent } from './register/conexionregistro/conexionr
     OAuth2LoginComponentComponent,
     RegisterComponent,
     ConexionregistroComponent,
+    ConexionloginComponent,
     //OAuth2CallbackComponentComponent
   ],
   exports: [
