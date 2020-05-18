@@ -57,23 +57,23 @@ export class UserinterfaceComponent implements OnInit {
 
     this.clearItems;
     this.nbMenuService.addItems(this.loginItems);
+    this.getData();
 
+    //this.dateUser = this.apiService.getDateUser();
+    ///this.pictureUser = this.dateUser["picture"];
+    //console.log(this.dateUser);
 
-    /* this.apiService.getNameDocs()
-      .subscribe(
-        (data) => { // Success
-          this.dateUserApi = data;
-          console.log(this.dateUserApi);
-        },
-        (error) => {
-          console.error(error);
-        }
-      ); */
+  }
 
-    this.dateUser = this.apiService.getDateUser();
-    this.pictureUser = this.dateUser["picture"];
-    console.log(this.dateUser);
+  async getData(){
+    this.apiService.resetResponse();
 
+    try {
+      this.apiService.getCurrentUser()
+    } catch (e) {
+      
+    }
+    
   }
 
   clearItems() {

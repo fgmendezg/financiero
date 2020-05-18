@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { NbAuthOAuth2Token, NbAuthService } from '@nebular/auth';
 import { Router } from '@angular/router';
+import {Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -69,6 +70,7 @@ export class ApirestService {
 
   //Obtiene token para iniciar sesion de forma convencional
   getTokenLogin(email: string, pass: string) {
+    localStorage.removeItem('auth_token');
     this.http.post(this.urlBackend + '/fdusuario_token',
       {
         "auth": {
@@ -76,11 +78,27 @@ export class ApirestService {
           "password": pass
         }
 
-      }).subscribe((resp: any)=>{
+      }).subscribe((resp: any) => {
+        console.log(resp.jwt)
         localStorage.setItem('auth_token', resp.jwt);
       })
 
     //TODO: Capturar errores, que pasa cuando el usuario o contraseñas son erroneos
+  }
+
+  // Obtiene los datos del usuario autenticado actualmente
+  getCurrentUser() {
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem("auth_token"),
+      'Accept': '*/*'
+    })
+    var res = this.http.get(this.urlBackend + '/fdusuarios/getDateCurrentUser', { headers: headers })
+    .subscribe((resp: any) => {
+      console.log(resp)
+    })
+
   }
 
   resetResponse() {

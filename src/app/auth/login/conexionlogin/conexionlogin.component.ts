@@ -17,11 +17,7 @@ export class ConexionloginComponent implements OnInit {
   }
 
   public async login(email: string, pass: string) {
-    if(localStorage.getItem('auth_token') == null){
-      this.apiService.getTokenLogin(email, pass);
-    }else{
-      console.log("El usuario ya estaba autenticado")
-    }
+    this.apiService.getTokenLogin(email, pass);
     //console.log(localStorage.getItem('auth_token'))
     this.router.navigate(['/dashboard']);
   }
