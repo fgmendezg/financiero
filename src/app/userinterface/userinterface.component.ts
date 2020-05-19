@@ -21,10 +21,9 @@ export class UserinterfaceComponent implements OnInit {
   disabledIconConfig: NbIconConfig = { icon: 'settings-2-outline', pack: 'eva' };
 
   items = [];
-  user = {};
   dateUser = {}
   pictureUser = "";
-  dateUserApi: any = [];
+  nameUser = "";
 
   loginItems: NbMenuItem[] = [
     {
@@ -57,7 +56,19 @@ export class UserinterfaceComponent implements OnInit {
 
     this.clearItems;
     this.nbMenuService.addItems(this.loginItems);
-    this.getData();
+
+    /* Estoy logueado pero no tengo datos de usuario cargados
+    TODO: Mejorar cuando tiene que cargar los datos desde aqui
+    ya que alcanza a cargar informacion vacia. Se podria poner una pagina anterior de carga */
+    if(this.apiService.getStatusLogin && (localStorage.getItem("data_user") == null )){
+      this.getData();
+    }else{
+      console.log("Ya tengo los datos")
+      this.dateUser = JSON.parse(localStorage.getItem("data_user"));
+      this.alistarVariables();
+      console.log(this.dateUser);
+    }
+    
 
     //this.dateUser = this.apiService.getDateUser();
     ///this.pictureUser = this.dateUser["picture"];
@@ -68,12 +79,51 @@ export class UserinterfaceComponent implements OnInit {
   async getData(){
     this.apiService.resetResponse();
 
+    var error = 0;
     try {
-      this.apiService.getCurrentUser()
+      await this.apiService.getCurrentUser();
     } catch (e) {
-      
+      error = 1;
+      console.error("Se a producido un error al obtener los datos de usuario desde el dasboard: " + e) 
     }
-    
+
+    if (error == 0){
+      this.procesarDataUser();
+    }
+  
+  }
+
+  async procesarDataUser(){
+
+    var segundosEspera = 0;
+    for (segundosEspera = 0; segundosEspera <= 3; segundosEspera++) {
+      if(this.apiService.getResponse() == undefined){
+        console.log("esperando");
+        await this.delay(500)
+        segundosEspera++;
+      }else{
+        segundosEspera = 10;
+      }
+    }
+
+    var data = this.apiService.getResponse();
+    if(data != undefined){
+      localStorage.setItem('data_user', JSON.stringify(data));
+      this.dateUser = data;
+      this.alistarVariables()
+    }
+    //console.log(this.dateUser['primer_nombre']);
+
+  }
+
+  delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+  }
+
+  /* El objetivo es realizar un filtrado para que el html pueda mostrar la informacion */
+  alistarVariables(){
+    this.nameUser = this.dateUser['primer_nombre'] + " " + this.dateUser['segundo_nombre'] + " " +this.dateUser['primer_apellido'] + 
+      " " + this.dateUser['segundo_apellido'];
   }
 
   clearItems() {

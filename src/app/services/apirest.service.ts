@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { NbAuthOAuth2Token, NbAuthService } from '@nebular/auth';
 import { Router } from '@angular/router';
-import {Observable } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +14,15 @@ export class ApirestService {
   private dateUser = {}
 
   private response;
+  private statusLogin = false;
 
-  constructor(protected http: HttpClient, private authService: NbAuthService, private router: Router) {
-    //console.log("Apirestservices");
+  constructor(protected http: HttpClient, private authService: NbAuthService, private router: Router) {}
+
+  /* Retorna el estado de login
+  true si alguien esta logueado
+  false si no hay sesion abierta */
+  getStatusLogin(){
+    return this.statusLogin;
   }
 
   getUsers() {
@@ -79,26 +85,49 @@ export class ApirestService {
         }
 
       }).subscribe((resp: any) => {
-        console.log(resp.jwt)
+        //console.log(resp.jwt)
+        this.statusLogin = true;
         localStorage.setItem('auth_token', resp.jwt);
+
+        // Trato de tener los datos de usuario lo antes posible
+        this.getCurrentUser();
       })
 
     //TODO: Capturar errores, que pasa cuando el usuario o contraseñas son erroneos
   }
 
-  // Obtiene los datos del usuario autenticado actualmente
-  getCurrentUser() {
+  /* Obtiene los datos del usuario autenticado actualmente */
+  async getCurrentUser() {
+
+    localStorage.setItem("data_user",null)
+
+    var segundosEspera = 0;
+    for (segundosEspera = 0; segundosEspera <= 3; segundosEspera++) {
+      if(localStorage.getItem("auth_token") == null){
+        console.log("esperando");
+        await this.delay(1000)
+        segundosEspera++;
+      }else{
+        segundosEspera = 10;
+      }
+    }
 
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': localStorage.getItem("auth_token"),
       'Accept': '*/*'
     })
-    var res = this.http.get(this.urlBackend + '/fdusuarios/getDateCurrentUser', { headers: headers })
+    this.http.get(this.urlBackend + '/fdusuarios/getDateCurrentUser', { headers: headers })
     .subscribe((resp: any) => {
-      console.log(resp)
+      //console.log(resp);
+      this.response = resp;
+      localStorage.setItem("data_user",JSON.stringify(resp))
     })
 
+  }
+
+  delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
   }
 
   resetResponse() {
