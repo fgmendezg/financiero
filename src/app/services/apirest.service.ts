@@ -16,12 +16,12 @@ export class ApirestService {
   private response;
   private statusLogin = false;
 
-  constructor(protected http: HttpClient, private authService: NbAuthService, private router: Router) {}
+  constructor(protected http: HttpClient, private authService: NbAuthService, private router: Router) { }
 
   /* Retorna el estado de login
   true si alguien esta logueado
   false si no hay sesion abierta */
-  getStatusLogin(){
+  getStatusLogin() {
     return this.statusLogin;
   }
 
@@ -99,15 +99,15 @@ export class ApirestService {
   /* Obtiene los datos del usuario autenticado actualmente */
   async getCurrentUser() {
 
-    localStorage.setItem("data_user",null)
+    localStorage.setItem("data_user", null)
 
     var segundosEspera = 0;
     for (segundosEspera = 0; segundosEspera <= 3; segundosEspera++) {
-      if(localStorage.getItem("auth_token") == null){
+      if (localStorage.getItem("auth_token") == null) {
         console.log("esperando");
         await this.delay(1000)
         segundosEspera++;
-      }else{
+      } else {
         segundosEspera = 10;
       }
     }
@@ -118,16 +118,43 @@ export class ApirestService {
       'Accept': '*/*'
     })
     this.http.get(this.urlBackend + '/fdusuarios/getDateCurrentUser', { headers: headers })
-    .subscribe((resp: any) => {
-      //console.log(resp);
-      this.response = resp;
-      localStorage.setItem("data_user",JSON.stringify(resp))
-    })
+      .subscribe((resp: any) => {
+        //console.log(resp);
+        this.response = resp;
+        localStorage.setItem("data_user", JSON.stringify(resp))
+      })
 
   }
 
   delay(ms: number) {
-    return new Promise( resolve => setTimeout(resolve, ms) );
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  // edita los datos Numero de cedula, departamento, ciudad de residencia, celular y telefono
+  // consume a ...fdusuarios/updateuser/1
+  async standartUpdateUser(documento: string, departamento: string, ciudad: string, celular: string, telefono: string) {
+    localStorage.setItem("respose_standartUpdateUser", null);
+    var id_user = JSON.parse(localStorage.getItem("data_user"))['id'];
+
+    //console.log("id_user: " + id_user)
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem("auth_token"),
+      'Accept': '*/*'
+    })
+    this.http.patch(this.urlBackend + '/fdusuarios/updateuser/' + id_user, {
+      "num_identificacion": documento,
+      "departamento": departamento,
+      "ciudad": ciudad,
+      "celular": celular,
+      "telefono": telefono
+    }, { headers: headers })
+      .subscribe(
+        (val: any) => {
+        //console.log("Editar: " + JSON.parse(val) );
+        localStorage.setItem("respose_standartUpdateUser", JSON.stringify(val))
+      }
+      )
   }
 
   resetResponse() {
