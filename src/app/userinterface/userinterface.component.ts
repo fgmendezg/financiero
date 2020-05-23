@@ -2,12 +2,11 @@ import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/
 import { NbSidebarService } from '@nebular/theme';
 import { NbMenuItem, NbMenuService } from '@nebular/theme';
 import { NbIconConfig } from '@nebular/theme';
-import { NbAuthOAuth2Token, NbAuthService } from '@nebular/auth';
+import { NbAuthService } from '@nebular/auth';
+import { Router} from '@angular/router';
 
 //Servicios
 import { ApirestService } from '../services/apirest.service';
-
-var loginState = true;
 
 @Component({
   selector: 'app-userinterface',
@@ -47,12 +46,12 @@ export class UserinterfaceComponent implements OnInit {
     },
     {
       title: 'Salida Segura',
-      icon: 'unlock-outline',
+      icon: 'unlock-outline'
     },
   ];
 
   constructor(private sidebarService: NbSidebarService, private nbMenuService: NbMenuService,
-    private authService: NbAuthService, private apiService: ApirestService) {
+    private authService: NbAuthService, private apiService: ApirestService, private router:Router) {
 
     this.clearItems;
     this.nbMenuService.addItems(this.loginItems);
@@ -60,9 +59,12 @@ export class UserinterfaceComponent implements OnInit {
     /* Estoy logueado pero no tengo datos de usuario cargados
     TODO: Mejorar cuando tiene que cargar los datos desde aqui
     ya que alcanza a cargar informacion vacia. Se podria poner una pagina anterior de carga */
-    if(this.apiService.getStatusLogin && (localStorage.getItem("data_user") == null )){
+    if( localStorage.getItem("auth_token") == null ){
+      console.log("Obteniendo datos");
       this.getData();
     }else{
+      console.log("Storage: " + localStorage.getItem("auth_token"));
+
       console.log("Ya tengo los datos")
       this.dateUser = JSON.parse(localStorage.getItem("data_user"));
       this.alistarVariables();
@@ -131,6 +133,20 @@ export class UserinterfaceComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    // Logica cuando se oprime "Salida Segura" del NbMenuItem nbMenuService
+    this.nbMenuService.onItemClick().subscribe((event) => {
+      if (event.item.title === 'Salida Segura') {
+        console.log("Salida Segura");
+        localStorage.setItem('auth_token', null);
+        localStorage.setItem("data_user", null);
+        localStorage.setItem("respose_standartUpdateUser", null);
+
+        this.router.navigate(['/welcome']);
+      }
+    });
   }
+
+  
 
 }

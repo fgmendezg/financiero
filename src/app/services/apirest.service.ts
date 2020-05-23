@@ -14,16 +14,8 @@ export class ApirestService {
   private dateUser = {}
 
   private response;
-  private statusLogin = false;
 
   constructor(protected http: HttpClient, private authService: NbAuthService, private router: Router) { }
-
-  /* Retorna el estado de login
-  true si alguien esta logueado
-  false si no hay sesion abierta */
-  getStatusLogin() {
-    return this.statusLogin;
-  }
 
   getUsers() {
     return this.http.get(this.urlBackend + '/fdusuarios');
@@ -86,7 +78,7 @@ export class ApirestService {
 
       }).subscribe((resp: any) => {
         //console.log(resp.jwt)
-        this.statusLogin = true;
+        console.log("TOKEN: " )
         localStorage.setItem('auth_token', resp.jwt);
 
         // Trato de tener los datos de usuario lo antes posible
