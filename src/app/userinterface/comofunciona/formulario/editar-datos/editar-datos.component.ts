@@ -11,6 +11,8 @@ import { ApirestService } from '../../../../services/apirest.service';
 })
 export class EditarDatosComponent implements OnInit {
 
+  actualizar = false;
+
   dateUser = {}
   p_nombre = "";
   s_nombre = "";
@@ -59,21 +61,35 @@ export class EditarDatosComponent implements OnInit {
 
   /* Evie los datos al back para se agregados o modificados */
   async eviarDatos() {
-    this.numDocumento = (<HTMLInputElement>document.getElementById("input_documento")).value
-    this.email = (<HTMLInputElement>document.getElementById("input_email")).value
-    this.celular = (<HTMLInputElement>document.getElementById("input_celular")).value
-    this.telefono = (<HTMLInputElement>document.getElementById("input_telefono")).value
 
+    if((<HTMLInputElement>document.getElementById("input_celular")).value == ''){
+    }else{
+      this.celular = (<HTMLInputElement>document.getElementById("input_celular")).value
+    }
+
+    if((<HTMLInputElement>document.getElementById("input_telefono")).value == ''){
+    }else{
+      this.telefono = (<HTMLInputElement>document.getElementById("input_telefono")).value
+    }
+
+    if((<HTMLInputElement>document.getElementById("input_documento")).value == ''){
+    }else{
+      this.numDocumento = (<HTMLInputElement>document.getElementById("input_documento")).value
+    }
+  
+    
     //TODO: Validar datos o habilitar boton hasta que todos los datos esten
     await this.apiService.standartUpdateUser(this.numDocumento, this.departamento, this.ciudad, this.celular, this.telefono);
     var segundosEspera = 0;
     for (segundosEspera = 0; segundosEspera <= 3; segundosEspera++) {
+      this.actualizar = true;
       if (localStorage.getItem("respose_standartUpdateUser") != null) {
         //console.log("esperando");
         await this.delay(500)
         segundosEspera++;
       } else {
         segundosEspera = 10;
+        this.actualizar = false;
       }
     }
 
@@ -131,6 +147,17 @@ export class EditarDatosComponent implements OnInit {
 
   getCiudad(city: string) {
     this.ciudad = city;
+  }
+
+  /**
+   * Retorna false si el usuario no tiene documento
+   */
+  getStatusValorDoc(){
+    if(this.dateUser['num_identificacion'] == null || this.dateUser['num_identificacion'] == ''){
+      return false
+    }else{
+      return true
+    }
   }
 
 }

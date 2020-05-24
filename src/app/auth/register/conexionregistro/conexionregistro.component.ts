@@ -31,8 +31,6 @@ export class ConexionregistroComponent implements OnInit {
       // TODO: No se registro adecuadamente y debe mostrar un mensaje
 
     }
-
-    console.log(res);
   }
 
 }

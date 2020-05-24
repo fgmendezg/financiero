@@ -1,11 +1,12 @@
-<nb-card>
+<nb-card [nbSpinner]="actualizar" nbSpinnerStatus="warning">
     <nb-card-body class="example-items-rows">
         <form action="" id="formEditarDatos">
             <div class="rejilla">
                 <div>
                     <label class="label">Primer Nombre:</label>
                     <div class="col-sm-9">
-                        <input class="inputsbasic" type="text" nbInput placeholder="{{p_nombre}}" id="input_p_nombre" disabled>
+                        <input class="inputsbasic" type="text" nbInput placeholder="{{p_nombre}}" id="input_p_nombre"
+                            disabled>
                     </div>
                 </div>
                 <div>
@@ -35,7 +36,8 @@
                 <div>
                     <label class="label">Número de Documento:</label>
                     <div class="col-sm-9">
-                        <input class="inputsbasic" type="text" nbInput placeholder="{{numDocumento}}" id="input_documento">
+                        <input class="inputsbasic" type="text" nbInput placeholder="{{numDocumento}}"
+                            id="input_documento" [disabled]="getStatusValorDoc()">
                     </div>
                 </div>
                 <div>
@@ -90,8 +92,9 @@
                 <div>
                     <label class="label">Ciudad de residencia:</label>
                     <div>
-                        <nb-select placeholder="{{ciudad}}" *ngIf="ciudades" [disabled]="isSelectDepartamento" (selectedChange)="getCiudad($event)">
-                            <nb-option *ngFor="let city of ciudades" [value]="city" >{{ city }}</nb-option>
+                        <nb-select placeholder="{{ciudad}}" *ngIf="ciudades" [disabled]="isSelectDepartamento"
+                            (selectedChange)="getCiudad($event)">
+                            <nb-option *ngFor="let city of ciudades" [value]="city">{{ city }}</nb-option>
                         </nb-select>
                     </div>
                 </div>
@@ -114,8 +117,13 @@
             </div>
 
         </form>
-        <button nbButton fullWidth status="success" (click)="eviarDatos()" >
-            Actualizar
-        </button>
+        <div class="alineacionBotones" (click)="close()">
+            <button nbButton>
+                Cancelar
+            </button>
+            <button nbButton status="success" (click)="eviarDatos()">
+                Actualizar
+            </button>
+        </div>
     </nb-card-body>
 </nb-card>

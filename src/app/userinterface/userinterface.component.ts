@@ -60,21 +60,13 @@ export class UserinterfaceComponent implements OnInit {
     TODO: Mejorar cuando tiene que cargar los datos desde aqui
     ya que alcanza a cargar informacion vacia. Se podria poner una pagina anterior de carga */
     if( localStorage.getItem("auth_token") == null ){
-      console.log("Obteniendo datos");
       this.getData();
     }else{
-      console.log("Storage: " + localStorage.getItem("auth_token"));
-
-      console.log("Ya tengo los datos")
       this.dateUser = JSON.parse(localStorage.getItem("data_user"));
       this.alistarVariables();
-      console.log(this.dateUser);
     }
     
-
-    //this.dateUser = this.apiService.getDateUser();
     ///this.pictureUser = this.dateUser["picture"];
-    //console.log(this.dateUser);
 
   }
 
@@ -137,7 +129,6 @@ export class UserinterfaceComponent implements OnInit {
     // Logica cuando se oprime "Salida Segura" del NbMenuItem nbMenuService
     this.nbMenuService.onItemClick().subscribe((event) => {
       if (event.item.title === 'Salida Segura') {
-        console.log("Salida Segura");
         localStorage.setItem('auth_token', null);
         localStorage.setItem("data_user", null);
         localStorage.setItem("respose_standartUpdateUser", null);

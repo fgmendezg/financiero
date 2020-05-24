@@ -78,7 +78,6 @@ export class ApirestService {
 
       }).subscribe((resp: any) => {
         //console.log(resp.jwt)
-        console.log("TOKEN: " )
         localStorage.setItem('auth_token', resp.jwt);
 
         // Trato de tener los datos de usuario lo antes posible

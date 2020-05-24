@@ -22,7 +22,7 @@ export class OAuth2CallbackComponentComponent implements OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe((authResult: NbAuthResult) => {
         if (authResult.isSuccess()) {
-          console.log("dashboard");
+          
           this.apiService.getDateGoogletoken();
           //this.router.navigateByUrl('/dashboard');
         }

@@ -27,9 +27,7 @@ export class ConexionloginComponent implements OnInit {
     while (this.loading && contadorTimeOut <= 10) {
       await this.delay(500)
       if (localStorage.getItem("auth_token") == null) {
-        console.log("No hay token");
       } else {
-        console.log("Si hay token");
         this.loading = false
         this.router.navigate(['/dashboard'])
       }
