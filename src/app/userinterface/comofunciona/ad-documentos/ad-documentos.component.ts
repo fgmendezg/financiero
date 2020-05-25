@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {ChangeDetectorRef} from '@angular/core'
+
+//Servicios
+import { ApirestService } from '../../../services/apirest.service';
 
 @Component({
   selector: 'app-ad-documentos',
@@ -6,10 +10,81 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ad-documentos.component.scss']
 })
 export class AdDocumentosComponent implements OnInit {
+  fileCedula = null;
+  load = false;
+  cargador = 0;
 
-  constructor() { }
+  constructor(private apiService: ApirestService, private ref: ChangeDetectorRef) {}
 
   ngOnInit(): void {
+  }
+
+  // Action del boton cargar que llamar a cargarArchivos de acuerdo a los archivos cargados
+  async loadFiles(){
+    this.load = true;
+    this.cargador = 4;
+
+    if ((<HTMLInputElement>document.getElementById("input_cedula")) == null) {this.cargador--} else{
+      this.cargarArchivos("input_cedula", "cedula")
+    }
+
+    if ((<HTMLInputElement>document.getElementById("input_nomina")) == null) {this.cargador--} else{
+      this.cargarArchivos("input_nomina", "nomina")
+    }
+
+    if ((<HTMLInputElement>document.getElementById("input_claboral")) == null) {this.cargador--} else{
+      this.cargarArchivos("input_claboral","certificadolaboral")
+    }
+
+    if ((<HTMLInputElement>document.getElementById("input_hvida")) == null) {this.cargador--} else{
+      this.cargarArchivos("input_hvida","hojadevida")
+    }
+
+
+    var timeEspera = 0;
+    for(timeEspera = 0; timeEspera <= 320; timeEspera++){
+      if(this.cargador <= 0){
+        timeEspera = 400;
+        console.log("Archivos cargados correctamente")
+      }else{
+        await this.delay(250);
+      }  
+    }
+
+  }
+
+  // Cargar un archivo a la vez llamando al metodo loadFile del apirest
+  async cargarArchivos(nameInput: string, name: String) {
+    if ((<HTMLInputElement>document.getElementById(nameInput)) == null) {
+      //No se carga
+      console.log("Archivo no encontrado para enviar")
+    } else {
+      localStorage.setItem("statusLoadFile" + name, null)
+      
+      this.fileCedula = (<HTMLInputElement>document.getElementById(nameInput)).files[0]
+      await this.apiService.loadFile(this.fileCedula,name);
+
+      var segundosEspera = 0;
+      this.load = true;
+      for (segundosEspera = 0; segundosEspera <= 20; segundosEspera++) {
+        if (localStorage.getItem("statusLoadFile" + name) == "true") {
+          segundosEspera = 30;
+          this.cargador--;
+          this.load = false;
+        } else {
+          await this.delay(1000)
+          segundosEspera++;
+        }
+      }
+
+      // Para que detecte el cambio y actualice la vista del spiner
+      this.ref.detectChanges();
+
+    }
+  }
+
+  delay(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
   }
 
 }

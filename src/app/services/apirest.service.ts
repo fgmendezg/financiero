@@ -142,9 +142,9 @@ export class ApirestService {
     }, { headers: headers })
       .subscribe(
         (val: any) => {
-        //console.log("Editar: " + JSON.parse(val) );
-        localStorage.setItem("respose_standartUpdateUser", JSON.stringify(val))
-      }
+          //console.log("Editar: " + JSON.parse(val) );
+          localStorage.setItem("respose_standartUpdateUser", JSON.stringify(val))
+        }
       )
   }
 
@@ -158,6 +158,36 @@ export class ApirestService {
 
   handleError(error: HttpErrorResponse) {
     console.log("Error: " + error)
+  }
+
+  // Cargar un archivo usando updatedocsci del controlador fdnamedocs
+  // Recibe el archivo y el nombre con el que se guardara en s3
+  async loadFile(archivo: File, nameFile: String) {
+
+    if(archivo == null){
+      console.log("No se recibio ningun archivo valido")
+      return false
+    }else{
+      const headers = new HttpHeaders({
+        'Authorization': localStorage.getItem("auth_token"),
+        'Accept': '*/*'
+      })
+  
+      let body = new FormData();
+      body.append("namedoc", archivo)
+  
+      return this.http.post(this.urlBackend + '/fdnamedocs/updatedocsci?name=' + nameFile, body, { headers: headers })
+        .subscribe(
+          (res) => {
+            console.log(res)
+            localStorage.setItem("statusLoadFile" + nameFile, "true")
+          },
+          (err) => {
+            console.log("Error inesperado al subir archivo " + archivo.name)
+            console.log(err);
+          }
+        )
+    }
 
   }
 

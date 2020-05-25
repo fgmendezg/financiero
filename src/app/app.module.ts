@@ -8,7 +8,7 @@ import { NbThemeModule, NbLayoutModule, NbMenuModule, NbButtonModule } from '@ne
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { HttpClientModule } from '@angular/common/http';
 import { NbPasswordAuthStrategy, NbAuthModule, NbDummyAuthStrategy, NbOAuth2AuthStrategy, NbOAuth2ResponseType } from '@nebular/auth';
-import { NbSidebarService, NbCardModule } from '@nebular/theme';
+import { NbSidebarService, NbCardModule, NbDialogModule } from '@nebular/theme';
 import { HomeuserModule } from './userinterface/homeuser/homeuser.module';
 import { OAuth2CallbackComponentComponent } from './auth/login/oauth2-callback-component/oauth2-callback-component.component';
 import { WelcomeModule } from './welcome/welcome.module'
@@ -67,7 +67,8 @@ import { ApirestService } from './services/apirest.service';
       forms: {},
     }),
     UserinterfaceModule,
-    WelcomeModule
+    WelcomeModule,
+    NbDialogModule.forRoot()
   ],
   providers: [NbSidebarService, ApirestService],
   bootstrap: [AppComponent],
