@@ -5,11 +5,12 @@ import { NbStepperModule, NbButtonModule, NbCardModule, NbInputModule, NbWindowM
 import { FormularioComponent } from './formulario/formulario.component';
 import { AdDocumentosComponent } from './ad-documentos/ad-documentos.component';
 import { EditarDatosComponent } from './formulario/editar-datos/editar-datos.component';
+import { DialogArchivosCargadosComponent } from './ad-documentos/dialog-archivos-cargados/dialog-archivos-cargados.component';
 
 
 
 @NgModule({
-  declarations: [ComofuncionaComponent, FormularioComponent, AdDocumentosComponent, EditarDatosComponent],
+  declarations: [ComofuncionaComponent, FormularioComponent, AdDocumentosComponent, EditarDatosComponent, DialogArchivosCargadosComponent],
   imports: [
     CommonModule,
     NbStepperModule,
