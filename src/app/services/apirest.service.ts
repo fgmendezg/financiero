@@ -191,6 +191,27 @@ export class ApirestService {
 
   }
 
+  /**
+   * Verifica si un archivo con el nombre recibido existe para el usuario actual
+   */
+  getIsExistFile(name: string){
+    var res = null;
+    localStorage.setItem("statusDoc" + name, "")
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem("auth_token"),
+      'Accept': '*/*'
+    })
+
+    this.http.get(this.urlBackend + '/fdnamedocs/isexist?name=' + name, { headers: headers })
+    .subscribe((resp: any) => {
+      res = resp;
+      localStorage.setItem("statusDoc" + name, resp)
+    })
+
+    return res;
+  }
+
   // Registra en el back un usuario con los datos que estan en la variables dateUser
   autenticacion() {
     //console.log(this.dateUser);

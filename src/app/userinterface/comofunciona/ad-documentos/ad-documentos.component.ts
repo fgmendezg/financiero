@@ -12,12 +12,34 @@ import { ApirestService } from '../../../services/apirest.service';
   styleUrls: ['./ad-documentos.component.scss']
 })
 export class AdDocumentosComponent implements OnInit {
-  //@ViewChild('dialogSuccess') dialogSuccess:DialogArchivosCargadosComponent;
   fileCedula = null;
   load = false;
   cargador = 0;
+  mensageCedula = "No se a encontrado Cedula en el sistema"
+  mensageNomina = "No se a encontrado Comprobante de Nomina en el sistema"
+  mensageCLaboral = "No se a encontrado Certificado Laboral en el sistema"
+  mensageHVida = "No se a encontrado Hoja de vida en el sistema"
 
-  constructor(private apiService: ApirestService, private ref: ChangeDetectorRef, private dialogService: NbDialogService) { }
+  cssmsgCedula = "textoFail"
+  cssmsgNomina = "textoFail"
+  cssmsgCLaboral = "textoFail"
+  cssmsgHVida = "textoFail"
+
+  constructor(private apiService: ApirestService, private ref: ChangeDetectorRef, private dialogService: NbDialogService) {
+    // Verifica si el usuario actual ya tiene archivos en el sistema
+    this.apiService.getIsExistFile("cedula")
+    this.awaitStatusDocs("cedula")
+
+    this.apiService.getIsExistFile("nomina")
+    this.awaitStatusDocs("nomina")
+
+    this.apiService.getIsExistFile("certificadolaboral")
+    this.awaitStatusDocs("certificadolaboral")
+
+    this.apiService.getIsExistFile("hojadevida")
+    this.awaitStatusDocs("hojadevida")
+
+  }
 
   ngOnInit(): void {
   }
@@ -118,6 +140,41 @@ export class AdDocumentosComponent implements OnInit {
         message: message
       }
     });
+  }
+
+  /**
+   * Verifica si el documento con el name recibido lo tiene el usuario actual
+   * Si lo tiene cambia el mensaje y el tema de las letras
+   */
+  async awaitStatusDocs(name: string){
+    var segundos = 0;
+    for(segundos = 0; segundos <= 10; segundos++){
+      if(localStorage.getItem("statusDoc" + name) == ""){
+        await this.delay(250)
+      }else{
+        segundos = 2000;
+
+        if(name == "cedula"){
+          this.mensageCedula = "Cedula esta actualmente en el sistema"
+          this.cssmsgCedula = "textoSucces"
+        }
+
+        if(name == "nomina"){
+          this.mensageNomina = "Nomina esta actualmente en el sistema"
+          this.cssmsgNomina = "textoSucces"
+        }
+
+        if(name == "certificadolaboral"){
+          this.mensageCLaboral = "certificado laboral esta actualmente en el sistema"
+          this.cssmsgCLaboral = "textoSucces"
+        }
+
+        if(name == "hojadevida"){
+          this.mensageHVida = "Hoja de vida esta actualmente en el sistema"
+          this.cssmsgHVida = "textoSucces"
+        }
+      }
+    }
   }
 
 }
