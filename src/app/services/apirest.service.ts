@@ -117,6 +117,7 @@ export class ApirestService {
 
   }
 
+
   delay(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
@@ -164,18 +165,18 @@ export class ApirestService {
   // Recibe el archivo y el nombre con el que se guardara en s3
   async loadFile(archivo: File, nameFile: String) {
 
-    if(archivo == null){
+    if (archivo == null) {
       console.log("No se recibio ningun archivo valido")
       return false
-    }else{
+    } else {
       const headers = new HttpHeaders({
         'Authorization': localStorage.getItem("auth_token"),
         'Accept': '*/*'
       })
-  
+
       let body = new FormData();
       body.append("namedoc", archivo)
-  
+
       return this.http.post(this.urlBackend + '/fdnamedocs/updatedocsci?name=' + nameFile, body, { headers: headers })
         .subscribe(
           (res) => {
@@ -194,7 +195,7 @@ export class ApirestService {
   /**
    * Verifica si un archivo con el nombre recibido existe para el usuario actual
    */
-  getIsExistFile(name: string){
+  getIsExistFile(name: string) {
     var res = null;
     localStorage.setItem("statusDoc" + name, "")
     const headers = new HttpHeaders({
@@ -204,12 +205,42 @@ export class ApirestService {
     })
 
     this.http.get(this.urlBackend + '/fdnamedocs/isexist?name=' + name, { headers: headers })
-    .subscribe((resp: any) => {
-      res = resp;
-      localStorage.setItem("statusDoc" + name, resp)
-    })
+      .subscribe((resp: any) => {
+        res = resp;
+        localStorage.setItem("statusDoc" + name, resp)
+      })
 
     return res;
+  }
+
+  /**
+   * Obtiene todos los sectores en base de datos
+   */
+  getSectors() {
+    localStorage.setItem("sectorList", "")
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem("auth_token"),
+      'Accept': '*/*'
+    })
+
+    this.http.get(this.urlBackend + '/fdsectors', { headers: headers })
+      .subscribe((resp: any) => {
+        localStorage.setItem("sectorList", JSON.stringify(resp))
+      })
+
+  }
+
+  /**
+   * Borra todas la variables guardadas en el navegador
+   * se llama cuando se cierra sesión
+   */
+  clearItems() {
+    localStorage.setItem('auth_token', null);
+    localStorage.setItem("data_user", null);
+    localStorage.setItem("respose_standartUpdateUser", null);
+    localStorage.setItem("sectorList", null)
   }
 
   // Registra en el back un usuario con los datos que estan en la variables dateUser

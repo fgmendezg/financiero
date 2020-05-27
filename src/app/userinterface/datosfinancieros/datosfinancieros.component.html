@@ -20,14 +20,14 @@
         </div>
     </div>
 
-    <div>
+    <!-- <div>
         <label class="label">Selecciona su convenio</label>
         <div class="col-sm-9">
             <nb-select class="inputsbasic" *ngIf="convenios">
-                <nb-option *ngFor="let convenio of convenios" [value]="convenio">{{ convenio }}</nb-option>
+                <nb-option *ngFor="let convenio of convenios" [value]="convenio" disabled>{{ convenio }}</nb-option>
             </nb-select>
         </div>
-    </div>
+    </div> -->
 
     <div class="divButton">
         <button (click)="enviarDatos()" nbButton>Confirmar</button>

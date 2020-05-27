@@ -129,10 +129,7 @@ export class UserinterfaceComponent implements OnInit {
     // Logica cuando se oprime "Salida Segura" del NbMenuItem nbMenuService
     this.nbMenuService.onItemClick().subscribe((event) => {
       if (event.item.title === 'Salida Segura') {
-        localStorage.setItem('auth_token', null);
-        localStorage.setItem("data_user", null);
-        localStorage.setItem("respose_standartUpdateUser", null);
-
+        this.apiService.clearItems()
         this.router.navigate(['/welcome']);
       }
     });
